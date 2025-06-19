@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tool Tài Xỉu MD5 - ID Approval</title>
+  <title>Tool Tài Xỉu MD5</title>
   <style>
     body { margin: 0; font-family: 'Courier New', monospace; background: black; color: #00ff00; overflow-x: hidden; }
     h1 { text-align: center; font-size: 28px; margin-top: 20px; text-shadow: 0 0 10px #00ff00; }
@@ -21,6 +21,10 @@
     .panel { border: 2px solid #00ff00; padding: 20px; margin-top: 20px; width: 90%; max-width: 500px; background-color: #050505; }
     .panel h2 { text-align: center; margin-top: 0; text-shadow: 0 0 8px #00ff00; }
     .admin-link { color: #888; font-size: 14px; text-decoration: underline; cursor: pointer; margin-top: 20px; }
+    /* CSS MỚI ĐƯỢC THÊM */
+    .contact-admin { margin-top: 25px; font-size: 16px; color: #00ff00; text-align: center; }
+    .contact-admin a { color: #87CEEB; /* Sky Blue */ text-decoration: none; font-weight: bold; }
+    .contact-admin a:hover { text-decoration: underline; text-shadow: 0 0 8px #87CEEB; }
   </style>
 </head>
 <body>
@@ -28,9 +32,16 @@
 <canvas id="matrix"></canvas>
 
 <div id="userLoginSection" class="container">
-  <h1>👤 NHẬP ID CỦA BẠN</h1>
-  <input id="idInput" placeholder="Nhập ID đã được duyệt..." />
+  <h1>🥰 NHẬP KEY CỦA BẠN</h1>
+  <input id="idInput" placeholder="Nhập key đã được duyệt..." />
   <button onclick="checkId()">ĐĂNG NHẬP</button>
+  
+  <div class="contact-admin">
+    Liên hệ Admin để mua: khuyên nên mua của @concacokila
+    <a href="https://t.me/concacokila" target="_blank">@concacokila</a> - 
+    <a href="https://t.me/ExTaiXiu2010" target="_blank">@ExTaiXiu2010</a> 🚀
+  </div>
+  
   <div id="userMessage" class="message"></div>
   <div class="admin-link" onclick="showAdminLogin()">Truy cập khu vực Admin</div>
 </div>
@@ -82,14 +93,20 @@
 let blinkInterval;
 
 let adminCredentials = {
-  username: "concacdcumay",
-  password: "123123p" 
+  username: "concacdcumay0990",
+  password: "123123pp" 
 };
 
-let approvedIDs = new Set([
-    "free1day", 
-    "danel", 
-    "extaixiu"
+let approvedIDs = new Set([ 
+    "Zk5Jh9LtCv", 
+    "Bm8Nx1FsPj",
+    "Qc0Gy6UrEl",
+    "Vf3Hs4KoMw",
+    "Ew1Ib7XzRk",
+    "Ls9Pd5YgTu",
+    "Mj2Qr0CnAf",
+    "Xt6Vu8WoBi",
+    "lonbimxaokhe",
 ]); 
 
 function showUserLogin() {
@@ -126,8 +143,8 @@ function checkId() {
         messageDiv.style.color = 'lime';
         setTimeout(showTool, 1500);
     } else {
-        messageDiv.textContent = '❌ ID này chưa được duyệt! Vui lòng liên hệ Admin.';
-        messageDiv.style.color = 'red';
+        messageDiv.textContent = '❌ MUA KEY ĐI NHÓC , IB @concacokila!';
+        messageDiv.style.color = 'blue';
     }
 }
 
@@ -141,15 +158,15 @@ function loginAdmin() {
         messageDiv.style.color = 'lime';
         setTimeout(showAdminPanel, 1500);
     } else {
-        messageDiv.textContent = '❌ Sai tên đăng nhập hoặc mật khẩu!';
-        messageDiv.style.color = 'red';
+        messageDiv.textContent = '❌ ADMIN ÓC CẶC VẬY!';
+        messageDiv.style.color = 'blue';
     }
 }
 
 function approveId() {
     const idToApprove = document.getElementById('idToApprove').value.trim();
     if (!idToApprove) {
-        alert("Vui lòng nhập một ID để duyệt!");
+        alert("Vui lòng nhập một Key để duyệt!");
         return;
     }
     
@@ -187,7 +204,6 @@ function analyze() {
   const red = document.getElementById('redLight');
   const resultDiv = document.getElementById('resultText');
   
-  // Lệnh này giờ sẽ không gây lỗi vì blinkInterval đã được khai báo
   clearInterval(blinkInterval);
   
   green.classList.remove('on-green');
@@ -196,7 +212,7 @@ function analyze() {
   resultDiv.style.color = "#00ff00";
   
   if (md5.length !== 32) {
-    resultDiv.textContent = "❌ Mã MD5 không hợp lệ!";
+    resultDiv.textContent = "🙏🏻 CÓ BIẾT PHÂN BIỆT MÃ MD5 KHÔNG ?";
     return;
   }
   const bytes = [];
@@ -231,13 +247,13 @@ function entropy(s) {
   let counts = {};
   for (let c of s) counts[c] = (counts[c] || 0) + 1;
   let probs = Object.values(counts).map(c => c / s.length);
-  return -probs.reduce((acc, p) => acc + p * Math.log2(p), 0);
+  return -probs.reduce((acc, p) => acc + (p > 0 ? p * Math.log2(p) : 0), 0);
 }
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
-const letters = "bố địt con mẹ chúng mày đấy được không nhóc";
+const letters = "10101010101001010101010101101011010010101010101010001111011";
 const fontSize = 14;
 const columns = canvas.width / fontSize;
 const drops = Array.from({ length: columns }).fill(1);
