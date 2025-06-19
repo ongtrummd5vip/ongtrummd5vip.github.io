@@ -235,10 +235,10 @@
 <div id="adminPanelSection" class="container" style="display: none;"></div>
 
 <script>
-// === Copy lại toàn bộ nội dung của các thẻ div đã ẩn ở trên vào đây ===
-document.getElementById('welcomePopup').innerHTML = `<div class="popup-content"><h2>🎉 CHÀO MỪNG ĐẾN VỚI TOOL DỰ ĐOÁN VIP 🎉</h2><p>Tool được sinh ra để hỗ trợ bạn, tuy nhiên hãy luôn nhớ rằng không có gì là tuyệt đối 100%. Vui lòng đọc kỹ lưu ý quan trọng dưới đây:</p><p><strong>GAME HIT.CLUB:</strong> <br/>LƯU Ý KHI CHƠI, bạn phải <strong>test trước 5 tay</strong> và xem tool báo:</p><p>- Nếu tool <strong>"gãy thông"</strong> (sai liên tiếp), hãy <strong>ĐÁNH NGƯỢC LẠI</strong> kết quả tool báo.</p><div class="example">Ví dụ "đánh ngược": Tool báo <span style="color:var(--primary-green); font-weight: bold;">TÀI</span>, bạn hãy đánh <span style="color:var(--red-light); font-weight: bold;">XỈU</span>.</div><p>- Nếu tool <strong>"ăn thông"</strong> (đúng liên tiếp), hãy <strong>ĐÁNH THEO</strong> kết quả tool báo.</p><div class="example">Ví dụ "đánh theo": Tool báo <span style="color:var(--primary-green); font-weight: bold;">TÀI</span>, bạn hãy đánh <span style="color:var(--primary-green); font-weight: bold;">TÀI</span>.</div><p><strong>GAME B52.CC:</strong> <br/>Cầu của game này ổn định hơn. Bạn nên <strong>ĐÁNH TRÙNG VỚI</strong> kết quả dự đoán của tool.</p><div class="example">Ví dụ: Tool dự đoán ra <span style="color:var(--primary-green); font-weight: bold;">TÀI</span>, bạn hãy vào game và đánh <span style="color:var(--primary-green); font-weight: bold;">TÀI</span>.</div><button onclick="closeWelcomePopup()">TÔI ĐÃ HIỂU!</button></div>`;
-document.getElementById('userLoginSection').innerHTML = `<h1>🥰 NHẬP KEY CỦA BẠN</h1><input id="idInput" placeholder="Nhập key đã được duyệt..." /><button onclick="checkId()">ĐĂNG NHẬP</button><div class="contact-admin">Liên hệ Admin để mua key: <a href="https://t.me/concacokila" target="_blank">@concacokila</a> - <a href="https://t.me/ExTaiXiu2010" target="_blank">@ExTaiXiu2010</a> 🚀</div><div id="userMessage" class="message"></div><div class="admin-link" onclick="showAdminLogin()">Truy cập khu vực Admin</div>`;
-document.getElementById('gameSelectionSection').innerHTML = `<h1>🎮 CHỌN GAME BẠN MUỐN CHƠI 🎮</h1><div class="game-grid"><div class="game-card hitclub" onclick="selectGame('HIT.CLUB')"><h3>HIT.CLUB</h3><p>Lưu ý: Cần test cầu trước khi chơi</p></div><div class="game-card b52" onclick="selectGame('B52.CC')"><h3>B52.CC</h3><p>Lưu ý: Đánh trùng với kết quả</p></div><div class="game-card xocdia88" onclick="selectGame('XOCDIA88')"><h3>XOCDIA88</h3><p>Cầu MD5 tiêu chuẩn</p></div><div class="game-card lucky" onclick="selectGame('LUCKY')"><h3>LUCKY</h3><p>Cầu MD5 tiêu chuẩn</p></div></div>`;
+// === THAY ĐỔI NỘI DUNG POPUP VÀ GAME SELECTION ===
+document.getElementById('welcomePopup').innerHTML = `<div class="popup-content"><h2>🎉 CHÀO MỪNG ĐẾN VỚI TOOL DỰ ĐOÁN VIP 🎉</h2><p>Tool được sinh ra để hỗ trợ bạn, tuy nhiên hãy luôn nhớ rằng không có gì là tuyệt đối 100%. Vui lòng đọc kỹ lưu ý quan trọng dưới đây:</p><p><strong>GAME HIT.CLUB:</strong> <br/>Lưu ý: Game này sử dụng thuật toán riêng, bạn nên <strong>test trước 5 tay</strong>.</p><p><strong>GAME B52.CC & CÁC GAME KHÁC:</strong> <br/>Cầu của các game này ổn định hơn. Bạn nên <strong>ĐÁNH TRÙNG VỚI</strong> kết quả dự đoán của tool.</p><div class="example">Ví dụ: Tool dự đoán ra <span style="color:var(--primary-green); font-weight: bold;">TÀI</span>, bạn hãy vào game và đánh <span style="color:var(--primary-green); font-weight: bold;">TÀI</span>.</div><button onclick="closeWelcomePopup()">TÔI ĐÃ HIỂU!</button></div>`;
+document.getElementById('userLoginSection').innerHTML = `<h1>🔐 NHẬP KEY CỦA BẠN</h1><input id="idInput" placeholder="Nhập key đã được duyệt..." /><button onclick="checkId()">ĐĂNG NHẬP</button><div class="contact-admin">Liên hệ Admin để mua key: <a href="https://t.me/concacokila" target="_blank">@concacokila</a> - <a href="https://t.me/ExTaiXiu2010" target="_blank">@ExTaiXiu2010</a> 🚀</div><div id="userMessage" class="message"></div><div class="admin-link" onclick="showAdminLogin()">Truy cập khu vực Admin</div>`;
+document.getElementById('gameSelectionSection').innerHTML = `<h1>🎮 CHỌN GAME BẠN MUỐN CHƠI 🎮</h1><div class="game-grid"><div class="game-card hitclub" onclick="selectGame('HIT.CLUB')"><h3>HIT.CLUB</h3><p>Thuật toán riêng, nên test cầu</p></div><div class="game-card b52" onclick="selectGame('B52.CC')"><h3>B52.CC</h3><p>Đánh trùng với kết quả</p></div><div class="game-card xocdia88" onclick="selectGame('XOCDIA88')"><h3>XOCDIA88</h3><p>Cầu MD5 tiêu chuẩn</p></div><div class="game-card lucky" onclick="selectGame('LUCKY')"><h3>LUCKY</h3><p>Cầu MD5 tiêu chuẩn</p></div></div>`;
 document.getElementById('adminLoginSection').innerHTML = `<h1>🔒 ADMIN LOGIN</h1><input id="adminUser" placeholder="Tên đăng nhập..." /><input id="adminPass" type="password" placeholder="Mật khẩu..." /><button onclick="loginAdmin()">ĐĂNG NHẬP</button><div id="adminLoginMessage" class="message"></div><div class="admin-link" onclick="showUserLogin()">Quay lại trang người dùng</div>`;
 document.getElementById('adminPanelSection').innerHTML = `<h1>⚙️ ADMIN PANEL</h1><div class="panel"><h2>Duyệt ID Người Dùng</h2><p>Nhập ID của người dùng để cấp quyền truy cập:</p><input id="idToApprove" placeholder="Nhập ID cần duyệt..." /><button onclick="approveId()">DUYỆT ID NÀY</button></div><div class="panel"><h2>Đổi Thông Tin Đăng Nhập</h2><input id="newAdminUser" placeholder="Tên đăng nhập mới..." /><input id="newAdminPass" type="password" placeholder="Mật khẩu mới..." /><button onclick="changeAdminCredentials()">LƯU THAY ĐỔI</button><div id="changeCredsMessage" class="message" style="font-size: 16px;"></div></div><button onclick="logoutAdmin()" style="background: var(--red-light); color: white; margin-top: 20px;">ĐĂNG XUẤT</button>`;
 
@@ -251,14 +251,13 @@ let correctCount = 0;
 
 // === BIẾN ADMIN & KEY ===
 let adminCredentials = { username: "concacdcumay0990", password: "123123pp" };
-let approvedIDs = new Set([ "Zk5Jh9LtCv", "Bm8Nx1FsPj", "Qc0Gy6UrEl", "Vf3Hs4KoMw", "Ew1Ib7XzRk", "Ls9Pd5YgTu", "Mj2Qr0CnAf", "Xt6Vu8WoBi", "lonbimxaokhe", "TESTKEY123" ]);
+let approvedIDs = new Set([ "Zk5Jh9LtCv", "Bm8Nx1FsPj", "Qc0Gy6UrEl", "Vf3Hs4KoMw", "Ew1Ib7XzRk", "Ls9Pd5YgTu", "Mj2Qr0CnAf", "Xt6Vu8WoBi", "lonbimxaokhe", "123" ]);
 
 // === QUẢN LÝ HIỂN THỊ CÁC KHUNG ===
 function hideAllSections() {
     document.querySelectorAll('.container').forEach(section => section.style.display = 'none');
     document.getElementById('welcomePopup').style.display = 'none';
 }
-
 function showUserLogin() { hideAllSections(); document.getElementById('userLoginSection').style.display = 'flex'; }
 function showAdminLogin() { hideAllSections(); document.getElementById('adminLoginSection').style.display = 'flex'; }
 function showTool() { hideAllSections(); document.getElementById('toolSection').style.display = 'flex'; }
@@ -267,7 +266,6 @@ function showGameSelection() { hideAllSections(); document.getElementById('gameS
 
 // === LUỒNG NGƯỜI DÙNG ===
 function checkId() {
-    // ... (logic không đổi)
     const userId = document.getElementById('idInput').value.trim();
     const messageDiv = document.getElementById('userMessage');
     if (!userId) { messageDiv.textContent = '❌ Vui lòng nhập Key!'; messageDiv.style.color = 'red'; return; }
@@ -276,7 +274,6 @@ function checkId() {
         setTimeout(() => { hideAllSections(); document.getElementById('welcomePopup').style.display = 'flex'; }, 1500);
     } else { messageDiv.textContent = '❌ SAI KEY HOẶC HẾT HẠN, MUA KEY IB ADMIN!'; messageDiv.style.color = 'var(--luxury-gold)'; }
 }
-
 function closeWelcomePopup() { showGameSelection(); }
 function selectGame(gameName) {
     selectedGame = gameName;
@@ -284,24 +281,18 @@ function selectGame(gameName) {
     showTool();
 }
 
-// === LOGIC TOOL VÀ PHẢN HỒI ===
+// === LOGIC PHẢN HỒI & THỐNG KÊ ===
 function resetToolState() {
     const resultDiv = document.getElementById('resultText');
     const md5Input = document.getElementById('md5Input');
     const analyzeBtn = document.getElementById('analyzeBtn');
-
-    // Xóa kết quả và dừng đèn
     clearInterval(blinkInterval);
     document.getElementById('greenLight').classList.remove('on-green');
     document.getElementById('redLight').classList.remove('on-red');
-
-    // Đặt lại thông báo
     resultDiv.textContent = "Sẵn sàng cho phiên tiếp theo!";
     resultDiv.style.fontSize = "24px";
     resultDiv.style.color = "#ccc";
     resultDiv.style.textShadow = 'none';
-
-    // Ẩn nút phản hồi và kích hoạt lại input
     document.getElementById('feedbackSection').style.display = 'none';
     md5Input.disabled = false;
     analyzeBtn.disabled = false;
@@ -312,7 +303,6 @@ function updateStats() {
     document.getElementById('sessionCount').textContent = sessionCount;
     document.getElementById('correctCount').textContent = correctCount;
     document.getElementById('incorrectCount').textContent = incorrectCount;
-
     if (sessionCount > 0) {
         const rate = (correctCount / sessionCount) * 100;
         document.getElementById('accuracyRate').textContent = rate.toFixed(1) + '%';
@@ -330,6 +320,55 @@ function handleFeedback(isCorrect) {
     resetToolState();
 }
 
+// === THUẬT TOÁN CHO HIT.CLUB (CHUYỂN TỪ PYTHON) ===
+function geometric_mean(numbers) {
+    const product = numbers.reduce((acc, num) => acc * (num + 1), 1);
+    return Math.pow(product, 1 / numbers.length);
+}
+function fibonacci_mod(n, mod) {
+    let a = 0, b = 1;
+    for (let i = 0; i < n; i++) {
+        [a, b] = [b, (a + b) % mod];
+    }
+    return b;
+}
+function analyze_md5_hitclub(md5_hash) {
+    const value = parseInt(md5_hash.substring(0, 8), 16);
+    const tai_base = value % 100;
+    const fib_mod = fibonacci_mod(md5_hash.length, 256);
+    const tai_modifier = (fib_mod % 20) - 10;
+    const hex_values = [];
+    for (let i = 0; i < 32; i += 2) {
+        hex_values.push(parseInt(md5_hash.substring(i, i + 2), 16));
+    }
+    const geo_mean = geometric_mean(hex_values);
+    const tai_score = Math.max(0, Math.min(100, tai_base + tai_modifier + (geo_mean % 10) - 5));
+    return tai_score > 50; // Trả về true nếu là TÀI, false nếu là XỈU
+}
+
+// === THUẬT TOÁN GỐC CHO CÁC GAME CÒN LẠI ===
+function entropy(s) {
+    let counts = {};
+    for (let c of s) counts[c] = (counts[c] || 0) + 1;
+    let probs = Object.values(counts).map(c => c / s.length);
+    return -probs.reduce((acc, p) => acc + (p > 0 ? p * Math.log2(p) : 0), 0);
+}
+function analyze_md5_standard(md5) {
+    const bytes = [];
+    for (let i = 0; i < 32; i += 2) bytes.push(parseInt(md5.substr(i, 2), 16));
+    const clusterSums = [0, 0, 0, 0];
+    for (let i = 0; i < 4; i++) clusterSums[i] = bytes[i*4] + bytes[i*4+1] + bytes[i*4+2] + bytes[i*4+3];
+    const clusterVariance = Math.max(...clusterSums) - Math.min(...clusterSums);
+    const e_score = entropy(md5) * 10;
+    const symmetry = [...Array(16).keys()].reduce((acc, i) => acc + (md5[i] === md5[31 - i] ? 1 : 0), 0);
+    const tail_bias = Math.abs(parseInt(md5.slice(0, 2), 16) - parseInt(md5.slice(-2), 16));
+    const even_count = bytes.filter(b => b % 2 === 0).length;
+    const odd_count = 16 - even_count;
+    const score = (clusterSums.reduce((a, b) => a + b, 0) * 0.4 + clusterVariance * 2 + e_score * 2 + symmetry * 3 + (even_count - odd_count) * 4 + tail_bias * 0.6) % 100;
+    return score >= 48; // Trả về true nếu là TÀI, false nếu là XỈU
+}
+
+// === HÀM PHÂN TÍCH CHÍNH ===
 function analyze() {
     const md5Input = document.getElementById('md5Input');
     const analyzeBtn = document.getElementById('analyzeBtn');
@@ -341,7 +380,7 @@ function analyze() {
     document.getElementById('redLight').classList.remove('on-red');
     resultDiv.textContent = "";
 
-    if (md5.length !== 32) {
+    if (md5.length !== 32 || !/^[0-9a-f]{32}$/.test(md5)) {
         resultDiv.textContent = "MD5 không hợp lệ!";
         resultDiv.style.color = "var(--luxury-gold)";
         return;
@@ -354,19 +393,14 @@ function analyze() {
     md5Input.disabled = true;
 
     setTimeout(() => {
-        // ... (phần logic thuật toán không đổi)
-        const bytes = [];
-        for (let i = 0; i < 32; i += 2) bytes.push(parseInt(md5.substr(i, 2), 16));
-        const clusterSums = [0, 0, 0, 0];
-        for (let i = 0; i < 4; i++) clusterSums[i] = bytes[i*4] + bytes[i*4+1] + bytes[i*4+2] + bytes[i*4+3];
-        const clusterVariance = Math.max(...clusterSums) - Math.min(...clusterSums);
-        const e_score = entropy(md5) * 10;
-        const symmetry = [...Array(16).keys()].reduce((acc, i) => acc + (md5[i] === md5[31 - i] ? 1 : 0), 0);
-        const tail_bias = Math.abs(parseInt(md5.slice(0, 2), 16) - parseInt(md5.slice(-2), 16));
-        const even_count = bytes.filter(b => b % 2 === 0).length;
-        const odd_count = 16 - even_count;
-        const score = (clusterSums.reduce((a, b) => a + b, 0) * 0.4 + clusterVariance * 2 + e_score * 2 + symmetry * 3 + (even_count - odd_count) * 4 + tail_bias * 0.6) % 100;
-        let isTai = score >= 48;
+        let isTai;
+
+        // **QUYẾT ĐỊNH DÙNG THUẬT TOÁN NÀO**
+        if (selectedGame === 'HIT.CLUB') {
+            isTai = analyze_md5_hitclub(md5);
+        } else {
+            isTai = analyze_md5_standard(md5);
+        }
 
         const result = isTai ? "TÀI" : "XỈU";
         const targetLight = isTai ? document.getElementById('greenLight') : document.getElementById('redLight');
@@ -381,17 +415,10 @@ function analyze() {
 
         blinkInterval = setInterval(() => targetLight.classList.toggle(targetClass), 1000);
 
-        // Hiển thị nút phản hồi
         document.getElementById('feedbackSection').style.display = 'flex';
     }, 5000);
 }
 
-function entropy(s) {
-    let counts = {};
-    for (let c of s) counts[c] = (counts[c] || 0) + 1;
-    let probs = Object.values(counts).map(c => c / s.length);
-    return -probs.reduce((acc, p) => acc + (p > 0 ? p * Math.log2(p) : 0), 0);
-}
 
 // === LOGIC ADMIN & MATRIX EFFECT (không đổi) ===
 function loginAdmin(){/*...*/} function approveId(){/*...*/} function changeAdminCredentials(){/*...*/} function logoutAdmin(){showUserLogin();}
