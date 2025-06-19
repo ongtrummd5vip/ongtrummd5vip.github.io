@@ -18,41 +18,41 @@
       --blue-light: #3498db;
     }
 
-    body { 
-      margin: 0; 
-      font-family: 'Courier New', monospace; 
-      background: var(--dark-bg); 
-      color: var(--text-color); 
-      overflow-x: hidden; 
+    body {
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      background: var(--dark-bg);
+      color: var(--text-color);
+      overflow-x: hidden;
     }
 
-    h1 { 
-      text-align: center; 
-      font-size: 28px; 
-      margin-top: 20px; 
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-top: 20px;
       color: var(--primary-green);
-      text-shadow: 0 0 10px var(--primary-green), 0 0 20px var(--primary-green); 
+      text-shadow: 0 0 10px var(--primary-green), 0 0 20px var(--primary-green);
     }
 
-    .container { 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      padding: 20px; 
-      z-index: 2; 
-      position: relative; 
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      z-index: 2;
+      position: relative;
     }
 
-    input { 
-      font-size: 18px; 
-      padding: 12px; 
-      border-radius: 5px; 
-      margin: 10px 0; 
+    input {
+      font-size: 18px;
+      padding: 12px;
+      border-radius: 5px;
+      margin: 10px 0;
       box-sizing: border-box;
-      width: 90%; 
-      max-width: 400px; 
-      background: #111; 
-      color: var(--text-color); 
+      width: 90%;
+      max-width: 400px;
+      background: #111;
+      color: var(--text-color);
       border: 2px solid var(--primary-green);
       text-align: center;
     }
@@ -62,18 +62,18 @@
       box-shadow: 0 0 15px var(--primary-green);
     }
 
-    button { 
-      font-size: 18px; 
-      padding: 12px; 
-      border-radius: 5px; 
-      border: none; 
-      margin: 10px 0; 
+    button {
+      font-size: 18px;
+      padding: 12px;
+      border-radius: 5px;
+      border: none;
+      margin: 10px 0;
       box-sizing: border-box;
-      background: linear-gradient(45deg, var(--primary-green), #00e038); 
-      color: var(--dark-bg); 
-      font-weight: bold; 
-      cursor: pointer; 
-      width: 200px; 
+      background: linear-gradient(45deg, var(--primary-green), #00e038);
+      color: var(--dark-bg);
+      font-weight: bold;
+      cursor: pointer;
+      width: 200px;
       box-shadow: 0 0 15px var(--primary-green);
       transition: all 0.3s ease;
     }
@@ -88,53 +88,52 @@
         transform: none;
     }
 
-    .lights { 
-      display: flex; 
-      justify-content: center; 
-      margin: 40px 0 10px; 
-      gap: 80px; 
+    .lights {
+      display: flex;
+      justify-content: center;
+      margin: 40px 0 10px;
+      gap: 80px;
     }
-    .light { 
-      width: 100px; 
-      height: 100px; 
-      border-radius: 50%; 
-      background: #111; 
-      box-shadow: inset 0 0 20px rgba(0,0,0,0.5); 
+    .light {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #111;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
       border: 2px solid #222;
     }
-    .green { background-color: #003300; } 
+    .green { background-color: #003300; }
     .red { background-color: var(--red-light-bg); }
-    
-    .on-green { 
-      background-color: var(--primary-green) !important; 
-      box-shadow: 0 0 25px 10px var(--primary-green); 
+
+    .on-green {
+      background-color: var(--primary-green) !important;
+      box-shadow: 0 0 25px 10px var(--primary-green);
     }
-    .on-red { 
-      background-color: var(--red-light) !important; 
-      box-shadow: 0 0 25px 10px var(--red-light); 
+    .on-red {
+      background-color: var(--red-light) !important;
+      box-shadow: 0 0 25px 10px var(--red-light);
     }
 
-    .result, .message { 
-      font-size: 24px; 
-      font-weight: bold; 
-      margin-top: 20px; 
+    .result, .message {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
       min-height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center; 
-      text-shadow: 0 0 12px; 
+      text-align: center;
+      text-shadow: 0 0 12px;
     }
 
-    canvas { 
-      position: fixed; 
-      top: 0; 
-      left: 0; 
-      z-index: 0; 
-      pointer-events: none; 
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
     }
 
-    /* === CSS MỚI CHO THỐNG KÊ VÀ NÚT PHẢN HỒI === */
     #statsSection {
         background-color: var(--panel-bg);
         border: 1px solid var(--luxury-gold);
@@ -172,7 +171,7 @@
         box-shadow: 0 0 15px var(--red-light);
         color: white;
     }
-    
+
     .game-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; width: 100%; max-width: 650px; margin-top: 30px; }
     .game-card { background: var(--panel-bg); border: 2px solid var(--border-color); border-radius: 10px; padding: 25px; text-align: center; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
     .game-card:hover { transform: translateY(-10px); }
@@ -196,7 +195,7 @@
     .popup-content strong { color: var(--luxury-gold); font-weight: bold; }
     .popup-content .example { background-color: #111; border-left: 4px solid var(--luxury-gold); padding: 10px; margin-top: 5px; font-style: italic; color: #eee; }
     .popup-content button { display: block; margin: 25px auto 0 auto; flex-shrink: 0; }
-    
+
     @media (max-width: 600px) { .game-grid { grid-template-columns: 1fr; gap: 20px; } .popup-content { padding: 20px; } .popup-content h2 { font-size: 20px; } .popup-content p, .popup-content .example { font-size: 14px; } }
   </style>
 </head>
@@ -225,7 +224,7 @@
     <div id="redLight" class="light red"></div>
   </div>
   <div id="resultText" class="result" style="font-size: 42px;"></div>
-  
+
   <div id="feedbackSection" style="display: none;">
       <button class="feedback-btn correct" onclick="handleFeedback(true)">ĐÚNG</button>
       <button class="feedback-btn incorrect" onclick="handleFeedback(false)">SAI</button>
@@ -237,9 +236,9 @@
 
 <script>
 // === Copy lại toàn bộ nội dung của các thẻ div đã ẩn ở trên vào đây ===
-document.getElementById('welcomePopup').innerHTML = `<div class="popup-content"><h2>🎉 CHÀO MỪNG ĐẾN VỚI TOOL DỰ ĐOÁN VIP 🎉</h2><p>Tool được sinh ra để hỗ trợ bạn, tuy nhiên hãy luôn nhớ rằng không có gì là tuyệt đối 100%. Vui lòng đọc kỹ lưu ý quan trọng dưới đây:</p><p><strong>GAME HIT.CLUB:</strong> <br/>Cầu của game này thường đi ngược. Bạn hãy <strong>ĐÁNH NGƯỢC LẠI</strong> kết quả dự đoán của tool.</p><div class="example">Ví dụ: Tool dự đoán ra <span style="color:var(--primary-green); font-weight: bold;">TÀI</span>, bạn hãy vào game và đánh <span style="color:var(--red-light); font-weight: bold;">XỈU</span>.</div><p><strong>GAME B52.CC:</strong> <br/>Cầu của game này ổn định hơn. Bạn nên <strong>ĐÁNH TRÙNG VỚI</strong> kết quả dự đoán của tool.</p><div class="example">Ví dụ: Tool dự đoán ra <span style="color:var(--primary-green); font-weight: bold;">TÀI</span>, bạn hãy vào game và đánh <span style="color:var(--primary-green); font-weight: bold;">TÀI</span>.</div><button onclick="closeWelcomePopup()">TÔI ĐÃ HIỂU!</button></div>`;
+document.getElementById('welcomePopup').innerHTML = `<div class="popup-content"><h2>🎉 CHÀO MỪNG ĐẾN VỚI TOOL DỰ ĐOÁN VIP 🎉</h2><p>Tool được sinh ra để hỗ trợ bạn, tuy nhiên hãy luôn nhớ rằng không có gì là tuyệt đối 100%. Vui lòng đọc kỹ lưu ý quan trọng dưới đây:</p><p><strong>GAME HIT.CLUB:</strong> <br/>LƯU Ý KHI CHƠI, bạn phải <strong>test trước 5 tay</strong> và xem tool báo:</p><p>- Nếu tool <strong>"gãy thông"</strong> (sai liên tiếp), hãy <strong>ĐÁNH NGƯỢC LẠI</strong> kết quả tool báo.</p><div class="example">Ví dụ "đánh ngược": Tool báo <span style="color:var(--primary-green); font-weight: bold;">TÀI</span>, bạn hãy đánh <span style="color:var(--red-light); font-weight: bold;">XỈU</span>.</div><p>- Nếu tool <strong>"ăn thông"</strong> (đúng liên tiếp), hãy <strong>ĐÁNH THEO</strong> kết quả tool báo.</p><div class="example">Ví dụ "đánh theo": Tool báo <span style="color:var(--primary-green); font-weight: bold;">TÀI</span>, bạn hãy đánh <span style="color:var(--primary-green); font-weight: bold;">TÀI</span>.</div><p><strong>GAME B52.CC:</strong> <br/>Cầu của game này ổn định hơn. Bạn nên <strong>ĐÁNH TRÙNG VỚI</strong> kết quả dự đoán của tool.</p><div class="example">Ví dụ: Tool dự đoán ra <span style="color:var(--primary-green); font-weight: bold;">TÀI</span>, bạn hãy vào game và đánh <span style="color:var(--primary-green); font-weight: bold;">TÀI</span>.</div><button onclick="closeWelcomePopup()">TÔI ĐÃ HIỂU!</button></div>`;
 document.getElementById('userLoginSection').innerHTML = `<h1>🥰 NHẬP KEY CỦA BẠN</h1><input id="idInput" placeholder="Nhập key đã được duyệt..." /><button onclick="checkId()">ĐĂNG NHẬP</button><div class="contact-admin">Liên hệ Admin để mua key: <a href="https://t.me/concacokila" target="_blank">@concacokila</a> - <a href="https://t.me/ExTaiXiu2010" target="_blank">@ExTaiXiu2010</a> 🚀</div><div id="userMessage" class="message"></div><div class="admin-link" onclick="showAdminLogin()">Truy cập khu vực Admin</div>`;
-document.getElementById('gameSelectionSection').innerHTML = `<h1>🎮 CHỌN GAME BẠN MUỐN CHƠI 🎮</h1><div class="game-grid"><div class="game-card hitclub" onclick="selectGame('HIT.CLUB')"><h3>HIT.CLUB</h3><p>Lưu ý: Đánh ngược lại kết quả</p></div><div class="game-card b52" onclick="selectGame('B52.CC')"><h3>B52.CC</h3><p>Lưu ý: Đánh trùng với kết quả</p></div><div class="game-card xocdia88" onclick="selectGame('XOCDIA88')"><h3>XOCDIA88</h3><p>Cầu MD5 tiêu chuẩn</p></div><div class="game-card lucky" onclick="selectGame('LUCKY')"><h3>LUCKY</h3><p>Cầu MD5 tiêu chuẩn</p></div></div>`;
+document.getElementById('gameSelectionSection').innerHTML = `<h1>🎮 CHỌN GAME BẠN MUỐN CHƠI 🎮</h1><div class="game-grid"><div class="game-card hitclub" onclick="selectGame('HIT.CLUB')"><h3>HIT.CLUB</h3><p>Lưu ý: Cần test cầu trước khi chơi</p></div><div class="game-card b52" onclick="selectGame('B52.CC')"><h3>B52.CC</h3><p>Lưu ý: Đánh trùng với kết quả</p></div><div class="game-card xocdia88" onclick="selectGame('XOCDIA88')"><h3>XOCDIA88</h3><p>Cầu MD5 tiêu chuẩn</p></div><div class="game-card lucky" onclick="selectGame('LUCKY')"><h3>LUCKY</h3><p>Cầu MD5 tiêu chuẩn</p></div></div>`;
 document.getElementById('adminLoginSection').innerHTML = `<h1>🔒 ADMIN LOGIN</h1><input id="adminUser" placeholder="Tên đăng nhập..." /><input id="adminPass" type="password" placeholder="Mật khẩu..." /><button onclick="loginAdmin()">ĐĂNG NHẬP</button><div id="adminLoginMessage" class="message"></div><div class="admin-link" onclick="showUserLogin()">Quay lại trang người dùng</div>`;
 document.getElementById('adminPanelSection').innerHTML = `<h1>⚙️ ADMIN PANEL</h1><div class="panel"><h2>Duyệt ID Người Dùng</h2><p>Nhập ID của người dùng để cấp quyền truy cập:</p><input id="idToApprove" placeholder="Nhập ID cần duyệt..." /><button onclick="approveId()">DUYỆT ID NÀY</button></div><div class="panel"><h2>Đổi Thông Tin Đăng Nhập</h2><input id="newAdminUser" placeholder="Tên đăng nhập mới..." /><input id="newAdminPass" type="password" placeholder="Mật khẩu mới..." /><button onclick="changeAdminCredentials()">LƯU THAY ĐỔI</button><div id="changeCredsMessage" class="message" style="font-size: 16px;"></div></div><button onclick="logoutAdmin()" style="background: var(--red-light); color: white; margin-top: 20px;">ĐĂNG XUẤT</button>`;
 
@@ -252,7 +251,7 @@ let correctCount = 0;
 
 // === BIẾN ADMIN & KEY ===
 let adminCredentials = { username: "concacdcumay0990", password: "123123pp" };
-let approvedIDs = new Set([ "Zk5Jh9LtCv", "Bm8Nx1FsPj", "Qc0Gy6UrEl", "Vf3Hs4KoMw", "Ew1Ib7XzRk", "Ls9Pd5YgTu", "Mj2Qr0CnAf", "Xt6Vu8WoBi", "lonbimxaokhe", "TESTKEY123" ]); 
+let approvedIDs = new Set([ "Zk5Jh9LtCv", "Bm8Nx1FsPj", "Qc0Gy6UrEl", "Vf3Hs4KoMw", "Ew1Ib7XzRk", "Ls9Pd5YgTu", "Mj2Qr0CnAf", "Xt6Vu8WoBi", "lonbimxaokhe", "TESTKEY123" ]);
 
 // === QUẢN LÝ HIỂN THỊ CÁC KHUNG ===
 function hideAllSections() {
@@ -295,7 +294,7 @@ function resetToolState() {
     clearInterval(blinkInterval);
     document.getElementById('greenLight').classList.remove('on-green');
     document.getElementById('redLight').classList.remove('on-red');
-    
+
     // Đặt lại thông báo
     resultDiv.textContent = "Sẵn sàng cho phiên tiếp theo!";
     resultDiv.style.fontSize = "24px";
@@ -368,7 +367,7 @@ function analyze() {
         const odd_count = 16 - even_count;
         const score = (clusterSums.reduce((a, b) => a + b, 0) * 0.4 + clusterVariance * 2 + e_score * 2 + symmetry * 3 + (even_count - odd_count) * 4 + tail_bias * 0.6) % 100;
         let isTai = score >= 48;
-        
+
         const result = isTai ? "TÀI" : "XỈU";
         const targetLight = isTai ? document.getElementById('greenLight') : document.getElementById('redLight');
         const targetClass = isTai ? "on-green" : "on-red";
@@ -397,6 +396,9 @@ function entropy(s) {
 // === LOGIC ADMIN & MATRIX EFFECT (không đổi) ===
 function loginAdmin(){/*...*/} function approveId(){/*...*/} function changeAdminCredentials(){/*...*/} function logoutAdmin(){showUserLogin();}
 const canvas = document.getElementById("matrix"); const ctx = canvas.getContext("2d"); canvas.height = window.innerHeight; canvas.width = window.innerWidth; const letters = "10101010101001010101010101101011010010101010101010001111011"; const fontSize = 14; const columns = canvas.width / fontSize; const drops = Array.from({ length: columns }).fill(1); function drawMatrix() { ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; ctx.fillRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = "var(--primary-green)"; ctx.font = fontSize + "px Courier New"; for (let i = 0; i < drops.length; i++) { const text = letters.charAt(Math.floor(Math.random() * letters.length)); ctx.fillText(text, i * fontSize, drops[i] * fontSize); if (drops[i] * fontSize > canvas.height || Math.random() > 0.975) { drops[i] = 0; } drops[i]++; } } setInterval(drawMatrix, 50);
+
+// Khởi động giao diện người dùng ban đầu
+showUserLogin();
 
 </script>
 </body>
