@@ -6,7 +6,7 @@
     <title>Tool Phân Tích MD5 - VIP</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
@@ -68,7 +68,7 @@
         #page-tool button { cursor: pointer; transition: 0.3s; font-weight: bold; }
         #page-tool button:hover { background: var(--dark-gold-color); color: var(--dark-color); }
         #page-tool #activateBtn { background-color: var(--dark-gold-color); color: var(--dark-color); }
-        #page-tool #resultDisplay { background: rgba(0,0,0,0.5); border: 1px solid var(--primary-color); margin-top: 10px; padding: 10px; min-height: 80px; white-space: pre-wrap; word-wrap: break-word; font-family: 'Share Tech Mono', monospace; font-size: 16px; border-radius: 5px; color: #39FF14; text-align: center; }
+        #page-tool #resultDisplay { background: rgba(0,0,0,0.5); border: 1px solid var(--primary-color); margin-top: 10px; padding: 15px; min-height: 150px; white-space: pre-wrap; word-wrap: break-word; font-family: 'Share Tech Mono', monospace; font-size: 16px; line-height: 1.8; border-radius: 5px; color: #39FF14; text-align: left; }
         #game-iframe { width: 100%; height: 450px; border: 1px solid var(--primary-color); border-radius: 8px; margin-top: 20px; background-color: #000; }
         #feedbackSection { margin-top: 15px; text-align: center; }
         #feedbackSection .counter { font-size: 18px; color: var(--white-color); margin-bottom: 10px; font-weight: bold; }
@@ -97,7 +97,7 @@
         </nav>
         <main id="content-area">
             <div id="page-login" class="page active">
-                 <div class="form-container">
+                <div class="form-container">
                     <h2>Đăng Nhập</h2>
                     <p class="subtitle">Công cụ phân tích - Đăng nhập hệ thống</p>
                     <form id="login-form">
@@ -109,7 +109,7 @@
                 </div>
             </div>
             <div id="page-register" class="page">
-                 <div class="form-container">
+                <div class="form-container">
                     <h2>Đăng Ký</h2>
                     <p class="subtitle">Công Cụ Tiện Ích - Phân Tích & Tự Động Hóa Dữ Liệu</p>
                     <form>
@@ -119,11 +119,11 @@
                         <div class="form-group"><input type="password" id="register-confirm-password" placeholder="Xác nhận mật khẩu" required></div>
                         <button type="button" class="btn" id="register-btn">Đăng Ký</button>
                     </form>
-                     <p class="form-link">Bạn đã có tài khoản? <a href="#" class="nav-link" data-page="login">Đăng nhập</a></p>
+                    <p class="form-link">Bạn đã có tài khoản? <a href="#" class="nav-link" data-page="login">Đăng nhập</a></p>
                 </div>
             </div>
             <div id="page-contact" class="page">
-                 <div class="content-box">
+                <div class="content-box">
                     <h2><i class="fa-solid fa-star" style="color: yellow;"></i> Thông Tin Admin</h2>
                     <div class="admin-card">
                         <h3>MR DANEL</h3>
@@ -134,12 +134,12 @@
                     <div class="admin-card">
                         <h3>NHANXG</h3>
                         <p>Hỗ Trợ Kích Hoạt tài Khoản Khi Bạn Mua, chuyên gia hỗ trợ khách hàng...</p>
-                         <a href="https://t.me/thuylinh17272" target="_blank" class="btn-telegram"><i class="fa-brands fa-telegram"></i> Liên hệ NHANXG</a>
+                        <a href="https://t.me/thuylinh17272" target="_blank" class="btn-telegram"><i class="fa-brands fa-telegram"></i> Liên hệ NHANXG</a>
                     </div>
                 </div>
             </div>
             <div id="page-notice" class="page">
-                <div class="content-box">
+               <div class="content-box">
                     <h2><i class="fa-solid fa-triangle-exclamation" style="color: yellow;"></i> Lưu Ý Quan Trọng</h2>
                     <ul class="notice-list">
                         <li>Hệ thống phân tích có xác suất, chỉ mang tính chất tham khảo...</li>
@@ -152,7 +152,7 @@
                 </div>
             </div>
             <div id="page-tool" class="page">
-                 <div class="tool-container">
+                <div class="tool-container">
                     <h2>TOOL PHÂN TÍCH MD5</h2>
                     <input type="url" id="gameUrlInput" placeholder="https://dán.link.game.tại.đây">
                     <button id="activateBtn">Vào Game & Kích Hoạt</button>
@@ -165,12 +165,12 @@
                             Đúng: <span id="correctCount">0</span> | Sai: <span id="incorrectCount">0</span>
                         </p>
                         <div class="btn-group">
-                             <button id="correctBtn">Đúng</button>
-                             <button id="incorrectBtn">Sai</button>
+                            <button id="correctBtn">Đúng</button>
+                            <button id="incorrectBtn">Sai</button>
                         </div>
                     </div>
-                 </div>
-                 <iframe id="game-iframe" title="Game"></iframe>
+                </div>
+                <iframe id="game-iframe" title="Game"></iframe>
             </div>
         </main>
     </div>
@@ -178,8 +178,6 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     // --- DATABASE & SCRIPT URL ---
-    // This URL points to your Google Apps Script for handling login/registration.
-    // Make sure it's deployed as a web app accessible to "Anyone".
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLfr6CJV6QN-F0HGCGtIrDWughIiWt2x-bW6lb59PUVdeWEDGP6wEoEa0Rk8C77EFtIg/exec';
 
     // --- PAGE NAVIGATION & MENU ---
@@ -211,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- LOGIN & REGISTER LOGIC ---
     const loginForm = document.getElementById('login-form');
-    if (loginForm) { // Ensure loginForm exists before adding listener
+    if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const username = document.getElementById('login-username').value;
@@ -221,14 +219,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             fetch(SCRIPT_URL + '?action=login', {
                 method: 'POST',
-                mode: 'cors', // Crucial for cross-origin requests to Apps Script
+                mode: 'cors',
                 body: JSON.stringify({ username, password })
             })
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
                     Swal.fire({ icon: 'success', title: 'Đăng nhập thành công!', showConfirmButton: false, timer: 1500 });
-                    showPage('page-notice'); // Navigate to the notice page after successful login
+                    showPage('page-notice');
                 } else {
                     Swal.fire({ icon: 'error', title: 'Lỗi', text: data.message || 'Có lỗi xảy ra.' });
                 }
@@ -237,9 +235,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
     const registerBtn = document.getElementById('register-btn');
-    if (registerBtn) { // Ensure registerBtn exists before adding listener
+    if (registerBtn) {
         registerBtn.addEventListener('click', () => {
             const username = document.getElementById('register-username').value.trim();
             const email = document.getElementById('register-email').value.trim();
@@ -266,9 +263,9 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 if (data.success) {
                     Swal.fire({ icon: 'info', title: 'Yêu Cầu Đã Gửi', text: 'Yêu cầu đăng ký đã được gửi đi. Vui lòng chờ Admin duyệt!' })
-                        .then(() => showPage('page-login')); // Go back to login after registration request
+                        .then(() => showPage('page-login'));
                 } else {
-                     Swal.fire({ icon: 'error', title: 'Lỗi Đăng Ký', text: data.message || 'Có lỗi xảy ra.' });
+                    Swal.fire({ icon: 'error', title: 'Lỗi Đăng Ký', text: data.message || 'Có lỗi xảy ra.' });
                 }
             })
             .catch(err => Swal.fire({ icon: 'error', title: 'Lỗi Mạng', text: 'Không thể kết nối đến máy chủ.' }));
@@ -291,20 +288,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let correctCount = 0;
     let incorrectCount = 0;
 
-    // Function to handle opening game URL in iframe
     activateBtn.addEventListener('click', () => {
         let url = gameUrlInput.value.trim();
         if (url) {
-            // Prepend https:// if no protocol is specified
             if (!url.startsWith('http://') && !url.startsWith('https://')) {
                 url = 'https://' + url;
             }
             gameIframe.src = url;
-            // Inform user about potential iframe blocking
             Swal.fire({
                 icon: 'info',
                 title: 'Lưu ý về Game',
-                html: 'Một số trang web game có thể chặn việc nhúng vào iframe do chính sách bảo mật (Same-Origin Policy). Nếu game không hiển thị, vui lòng mở link trong tab mới của trình duyệt.',
+                html: 'Một số trang web game có thể chặn việc nhúng vào iframe do chính sách bảo mật. Nếu game không hiển thị, vui lòng mở link trong tab mới của trình duyệt.',
                 confirmButtonText: 'Đã hiểu'
             });
         } else {
@@ -312,69 +306,119 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // New MD5 analysis function based on your provided algorithm
-    const analyze_md5 = (md5_hash) => {
-        if (md5_hash.length !== 32) {
-            return "❌ MD5 không hợp lệ (phải đủ 32 ký tự).";
-        }
+    // ====================================================================================
+    // ===== BẮT ĐẦU PHẦN THUẬT TOÁN MD5 MỚI (ĐÃ CHUYỂN TỪ PYTHON SANG JAVASCRIPT) =====
+    // ====================================================================================
 
-        const part1 = md5_hash.substring(0, 4);
-        const part2 = md5_hash.substring(14, 18); // positions 14-17
-        const part3 = md5_hash.substring(md5_hash.length - 4);
-
-        let val1, val2, val3;
-        try {
-            val1 = parseInt(part1, 16);
-            val2 = parseInt(part2, 16);
-            val3 = parseInt(part3, 16);
-            // Check if any parsing resulted in NaN (invalid hex characters)
-            if (isNaN(val1) || isNaN(val2) || isNaN(val3)) {
-                throw new Error("Invalid hex characters");
-            }
-        } catch (e) {
-            return "❌ MD5 có ký tự không hợp lệ (không phải hex).";
-        }
-
-        const total = (val1 + val2 + val3) % 100;
-        
-        // =================================================================
-        // SỬA LỖI LOGIC TẠI ĐÂY
-        // Dựa trên phản hồi, kết quả bị ngược. Ta đảo ngược điều kiện.
-        // Logic cũ: (total >= 50) ? "TÀI" : "XỈU"
-        // Logic mới:
-        const result = (total >= 50) ? "TAI" : "XIU";
-        // =================================================================
-
-        return `
-─────────────[ PHÂN TÍCH ]─────────────
-📌 Kết quả : ${result}
-─────────────────────────────────────
-`;
+    /**
+     * Kiểm tra xem chuỗi có phải là mã MD5 hợp lệ không.
+     * @param {string} md5 Chuỗi cần kiểm tra.
+     * @returns {boolean} True nếu hợp lệ, ngược lại là false.
+     */
+    const isValidMd5 = (md5) => {
+        // Sử dụng biểu thức chính quy (regex) để kiểm tra 32 ký tự hex
+        return /^[a-f0-9]{32}$/i.test(md5);
     };
 
-    // Event listener for the Analyze button
+    /**
+     * Tính toán entropy của một chuỗi.
+     * @param {string} s Chuỗi đầu vào.
+     * @returns {number} Giá trị entropy.
+     */
+    const calculateEntropy = (s) => {
+        const charCounts = {};
+        for (const char of s) {
+            charCounts[char] = (charCounts[char] || 0) + 1;
+        }
+
+        let entropy = 0;
+        const len = s.length;
+        for (const count of Object.values(charCounts)) {
+            const p = count / len;
+            entropy -= p * Math.log2(p);
+        }
+        return entropy;
+    };
+
+    /**
+     * Tính độ lệch chuẩn của các giá trị hex trong mã MD5.
+     * @param {string} md5 Chuỗi MD5.
+     * @returns {number} Độ lệch chuẩn.
+     */
+    const standardDeviationHex = (md5) => {
+        const values = [...md5].map(c => parseInt(c, 16));
+        const avg = values.reduce((sum, val) => sum + val, 0) / values.length;
+        const variance = values.reduce((sum, val) => sum + (val - avg) ** 2, 0) / values.length;
+        return Math.sqrt(variance);
+    };
+
+    /**
+     * Hàm phân tích MD5 chính.
+     * @param {string} md5 Chuỗi MD5 cần phân tích.
+     * @returns {string} Chuỗi kết quả đã được định dạng.
+     */
+    const analyzeMd5 = (md5) => {
+        const md5Lower = md5.toLowerCase();
+
+        if (!isValidMd5(md5Lower)) {
+            return "❌ Mã MD5 không hợp lệ. Vui lòng nhập đúng 32 ký tự hex.";
+        }
+
+        try {
+            const lastChar = md5Lower.slice(-1);
+            const lastDigit = parseInt(lastChar, 16);
+            
+            // Sử dụng BigInt để xử lý số 128-bit an toàn
+            const binary = BigInt('0x' + md5Lower).toString(2).padStart(128, '0');
+            
+            const bit1Count = (binary.match(/1/g) || []).length;
+            const bit1Ratio = bit1Count / 128;
+            
+            const entropy = calculateEntropy(md5Lower);
+            const stdDev = standardDeviationHex(md5Lower);
+            
+            const taiXiuResult = (lastDigit >= 8) ? "Tài" : "Xỉu";
+            
+            // Định dạng chuỗi kết quả
+            return `🎰 PHÂN TÍCH KẾT QUẢ TÀI XỈU MD5 🔮
+🔐 Mã MD5: ${md5}
+🎲 Số cuối: ${lastChar} | Entropy: ${entropy.toFixed(4)}
+⚙️ Tỷ lệ bit 1: ${(bit1Ratio * 100).toFixed(2)}%
+📉 Độ lệch chuẩn Hex: ${stdDev.toFixed(4)}
+
+🌌 Kết quả: 🔥 ${taiXiuResult} 🔥`;
+
+        } catch (error) {
+            console.error("Lỗi phân tích MD5:", error);
+            return "❌ Đã xảy ra lỗi trong quá trình phân tích.";
+        }
+    };
+
+    // ====================================================================================
+    // ===== KẾT THÚC PHẦN THUẬT TOÁN MD5 MỚI ============================================
+    // ====================================================================================
+
+
     analyzeBtn.addEventListener('click', () => {
-        const md5 = md5Input.value.trim().toLowerCase(); // Convert to lowercase for consistent hex parsing
+        const md5 = md5Input.value.trim();
         if (!md5) {
             resultDisplay.textContent = "Vui lòng nhập mã MD5.";
-            feedbackSection.style.display = 'none'; // Hide feedback if no MD5
+            feedbackSection.style.display = 'none';
             return;
         }
         
         resultDisplay.textContent = "⏳ Đang phân tích, vui lòng chờ...";
         
-        // Simulate a delay for the analysis process
         setTimeout(() => {
-            const analysisResult = analyze_md5(md5);
+            const analysisResult = analyzeMd5(md5);
             resultDisplay.textContent = analysisResult;
             
-            // Only show feedback buttons if the analysis was successful (doesn't contain an error message)
             if (!analysisResult.startsWith('❌')) {
                 feedbackSection.style.display = 'block'; 
             } else {
-                feedbackSection.style.display = 'none'; // Hide feedback if there was an error
+                feedbackSection.style.display = 'none';
             }
-        }, 1000); // Shorter delay for a snappier user experience
+        }, 500); // Giảm thời gian chờ để trải nghiệm tốt hơn
     });
 
     // Event listeners for feedback buttons
@@ -382,7 +426,6 @@ document.addEventListener('DOMContentLoaded', () => {
         correctCount++;
         correctCountSpan.textContent = correctCount;
         Swal.fire({ icon: 'success', title: 'Đã ghi nhận!', showConfirmButton: false, timer: 1000 });
-        // Reset for next analysis
         md5Input.value = '';
         resultDisplay.textContent = "Kết quả phân tích sẽ hiện ở đây...";
         feedbackSection.style.display = 'none';
@@ -392,12 +435,11 @@ document.addEventListener('DOMContentLoaded', () => {
         incorrectCount++;
         incorrectCountSpan.textContent = incorrectCount;
         Swal.fire({ icon: 'error', title: 'Đã ghi nhận!', showConfirmButton: false, timer: 1000 });
-        // Reset for next analysis
         md5Input.value = '';
         resultDisplay.textContent = "Kết quả phân tích sẽ hiện ở đây...";
         feedbackSection.style.display = 'none';
     });
 });
-</script>
+</script>       
 </body>
 </html>
