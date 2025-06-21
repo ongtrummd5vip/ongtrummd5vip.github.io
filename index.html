@@ -411,7 +411,7 @@
                 <li><a href="#" class="nav-link" data-page="login"><i class="fa-solid fa-house"></i>Trang chủ</a></li>
                 <li><a href="https://t.me/vhcc8388" target="_blank"><i class="fa-solid fa-users"></i>Group Cộng Đồng</a></li>
                 <li><a href="#" class="nav-link" data-page="contact"><i class="fa-solid fa-phone"></i>Liên hệ</a></li>
-                <li><a href="#" class="nav-link" data-page="admin"><i class="fa-solid fa-user-shield"></i>Admin Panel</a></li>
+                <li><a href="admin.html" target="_blank"><i class="fa-solid fa-user-shield"></i>Admin Panel</a></li>
             </ul>
             <div class="menu-footer">
                 Phát triển bởi @concacokila
@@ -424,14 +424,14 @@
                 <div class="form-container">
                     <h2>Đăng Nhập</h2>
                     <p class="subtitle">Công cụ phân tích - Đăng nhập hệ thống</p>
-                    <form>
+                    <form id="login-form">
                         <div class="form-group">
-                            <input type="text" placeholder="Tên đăng nhập">
+                            <input type="text" id="login-username" placeholder="Tên đăng nhập" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" placeholder="Mật khẩu">
+                            <input type="password" id="login-password" placeholder="Mật khẩu" required>
                         </div>
-                        <button type="button" class="btn" id="login-btn">Đăng Nhập</button>
+                        <button type="submit" class="btn">Đăng Nhập</button>
                     </form>
                     <p class="form-link">Bạn chưa có tài khoản? <a href="#" class="nav-link" data-page="register">Đăng ký</a></p>
                 </div>
@@ -443,16 +443,16 @@
                     <p class="subtitle">Công Cụ Tiện Ích - Phân Tích & Tự Động Hóa Dữ Liệu</p>
                     <form>
                         <div class="form-group">
-                            <input type="text" id="register-username" placeholder="Tên đăng nhập">
+                            <input type="text" id="register-username" placeholder="Tên đăng nhập" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="register-email" placeholder="Gmail của bạn">
+                            <input type="email" id="register-email" placeholder="Gmail của bạn" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" id="register-password" placeholder="Mật khẩu">
+                            <input type="password" id="register-password" placeholder="Mật khẩu" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" id="register-confirm-password" placeholder="Xác nhận mật khẩu">
+                            <input type="password" id="register-confirm-password" placeholder="Xác nhận mật khẩu" required>
                         </div>
                         <button type="button" class="btn" id="register-btn">Đăng Ký</button>
                     </form>
@@ -461,7 +461,7 @@
             </div>
 
             <div id="page-contact" class="page">
-                <div class="content-box">
+                 <div class="content-box">
                     <h2><i class="fa-solid fa-star" style="color: yellow;"></i> Thông Tin Admin</h2>
                     <div class="admin-card">
                         <h3>MR DANEL</h3>
@@ -487,314 +487,170 @@
                         <li>Tool hoạt động tốt nhất trên các cổng game được hỗ trợ.</li>
                     </ul>
                     <p style="text-align:center; margin-top: 30px; font-weight: 600; color: var(--white-color);">Tác giả: MR DANEL</p>
-                    <button type="button" class="btn" id="understand-btn" style="margin-top: 25px;">Tôi Đã Hiểu & Tiếp Tục</button>
+                    <button type="button" class="btn" id="understand-btn">Tôi Đã Hiểu & Tiếp Tục</button>
                 </div>
             </div>
 
             <div id="page-tool" class="page">
                  <div class="tool-container">
                     <h2>TOOL PHÂN TÍCH MD5</h2>
-                    
-                    <div id="url-loader-section">
-                        <input type='text' id='urlInput' placeholder='Dán Link Game Hệ Thống Hỗ Trợ Vào Đây'>
-                        <button id='loadIframeBtn'>Vào Game & Kích Hoạt</button>
-                    </div>
-
-                    <iframe id="game-iframe" style="display: none;"></iframe>
-
-                    <div id="analyzer-section" style="display: none; margin-top: 20px;">
+                    <div id="analyzer-section">
                         <input type="text" id="md5Input" placeholder="Nhập chuỗi MD5 tại đây">
                         <button id="analyzeBtn">Phân Tích</button>
                         <pre id="resultDisplay">Kết quả phân tích sẽ hiện ở đây...</pre>
-                        <div id="feedbackSection" style="display: none; margin-top: 5px; text-align: center;">
-                            <p style="margin-bottom: 5px; color: var(--text-color);">Kết quả phiên vừa rồi:</p>
-                            <button id="correctBtn" style="width: 49%; display: inline-block;">Đúng</button>
-                            <button id="incorrectBtn" style="width: 49%; display: inline-block; float: right;">Sai</button>
-                        </div>
-                        <div id="statsSection" style="margin-top: 15px; text-align: center; font-weight: bold; color: var(--text-color);">
-                            <span>Đúng: <span id="correctCount">0</span></span> |
-                            <span>Sai: <span id="incorrectCount">0</span></span>
-                        </div>
                     </div>
                  </div>
             </div>
-
-            <div id="page-admin" class="page">
-                <div class="content-box">
-                    <h2><i class="fa-solid fa-user-cog"></i> Bảng Điều Khiển Admin</h2>
-                    <h3><i class="fa-solid fa-user-plus"></i> Tạo người dùng mới</h3>
-                    <form id="addUserForm">
-                        <div class="form-group">
-                            <input type="text" id="admin-new-username" placeholder="Tên đăng nhập mới" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" id="admin-new-password" placeholder="Mật khẩu" required>
-                        </div>
-                        <button type="submit" class="btn">Thêm Người Dùng</button>
-                    </form>
-                    <hr class="divider">
-                    <h3><i class="fa-solid fa-users-gear"></i> Quản lý người dùng</h3>
-                    <table id="user-management-table">
-                        <thead>
-                            <tr>
-                                <th>Tên đăng nhập</th>
-                                <th>Hành động</th>
-                            </tr>
-                        </thead>
-                        <tbody id="user-list-body"></tbody>
-                    </table>
-                </div>
-            </div>
-
+            
         </main>
     </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // --- BASIC APP SETUP ---
+    // --- KHAI BÁO BIẾN ---
     const menuToggleBtn = document.getElementById('menu-toggle-btn');
     const sideMenu = document.getElementById('side-menu');
     const navLinks = document.querySelectorAll('.nav-link');
     const pages = document.querySelectorAll('.page');
-    const loginBtn = document.getElementById('login-btn');
+    
+    const loginForm = document.getElementById('login-form');
     const understandBtn = document.getElementById('understand-btn');
     const registerBtn = document.getElementById('register-btn');
 
-    // --- ADMIN PASSWORD ---
-    const ADMIN_PASSWORD = 'mrdanelvip';
+    // --- KHÓA DỮ LIỆU TRÊN LOCALSTORAGE ---
+    const PENDING_USERS_KEY = 'tool_pendingUsers';
+    const APPROVED_USERS_KEY = 'tool_approvedUsers';
 
-    // --- FAKE USER DATABASE (Only Admin can add to this list now) ---
-    let users = [
-        { username: 'userdemo1', password: 'password123' },
-        { username: 'test_account', password: 'password123' },
-        { username: 'mr_danel', password: 'password123' }
-    ];
+    // --- HÀM HỖ TRỢ ---
+    const getData = (key) => JSON.parse(localStorage.getItem(key)) || [];
+    const setData = (key, data) => localStorage.setItem(key, JSON.stringify(data));
 
-    // --- NAVIGATION LOGIC ---
+    // Khởi tạo dữ liệu mẫu nếu chưa có
+    if (!localStorage.getItem(APPROVED_USERS_KEY)) {
+        const initialUsers = [
+            { username: 'userdemo1', password: 'password123' },
+            { username: 'mr_danel', password: 'password123' }
+        ];
+        setData(APPROVED_USERS_KEY, initialUsers);
+    }
+     if (!localStorage.getItem(PENDING_USERS_KEY)) {
+        setData(PENDING_USERS_KEY, []);
+    }
+
+
+    // --- LOGIC CHUYỂN TRANG ---
     const showPage = (pageId) => {
         pages.forEach(page => page.classList.remove('active'));
         const targetPage = document.getElementById(pageId);
         if (targetPage) {
             targetPage.classList.add('active');
         } else {
-            document.getElementById('page-login').classList.add('active');
+            document.getElementById('page-login').classList.add('active'); // Mặc định về trang login
         }
         sideMenu.classList.remove('open');
-    };
-
-    const promptForAdminPassword = () => {
-        Swal.fire({
-            title: 'Yêu Cầu Xác Thực Admin', input: 'password', inputPlaceholder: 'Nhập mật khẩu admin...',
-            inputAttributes: { autocapitalize: 'off', autocorrect: 'off' },
-            showCancelButton: true, confirmButtonText: 'Xác Nhận', cancelButtonText: 'Hủy',
-            showLoaderOnConfirm: true, background: 'var(--dark-color)', color: 'var(--text-color)',
-            preConfirm: (password) => {
-                if (password === ADMIN_PASSWORD) return true;
-                else { Swal.showValidationMessage('Mật khẩu không chính xác!'); return false; }
-            },
-            allowOutsideClick: () => !Swal.isLoading()
-        }).then((result) => {
-            if (result.isConfirmed) showPage('page-admin');
-        });
     };
 
     menuToggleBtn.addEventListener('click', () => sideMenu.classList.toggle('open'));
 
     navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const pageName = link.getAttribute('data-page');
-            if (pageName === 'admin') {
-                promptForAdminPassword();
-            } else {
+        const pageName = link.getAttribute('data-page');
+        if (pageName) { // Chỉ gán sự kiện cho các link có data-page
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
                 showPage("page-" + pageName);
-            }
-        });
+            });
+        }
     });
 
-    // --- LOGIN AND NOTICE FLOW ---
-    loginBtn.addEventListener('click', () => {
-        showPage('page-notice');
+    // --- LOGIC ĐĂNG NHẬP ---
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('login-username').value;
+        const password = document.getElementById('login-password').value;
+        const approvedUsers = getData(APPROVED_USERS_KEY);
+        
+        const foundUser = approvedUsers.find(user => user.username === username && user.password === password);
+        
+        if (foundUser) {
+            Swal.fire({ icon: 'success', title: 'Đăng nhập thành công!', showConfirmButton: false, timer: 1500 });
+            showPage('page-notice');
+        } else {
+            Swal.fire({ icon: 'error', title: 'Lỗi', text: 'Sai tên đăng nhập hoặc mật khẩu, hoặc tài khoản của bạn chưa được duyệt!' });
+        }
     });
 
     understandBtn.addEventListener('click', () => {
         showPage('page-tool');
     });
     
-    // --- *** START: MODIFIED REGISTRATION LOGIC *** ---
-    if (registerBtn) {
-        registerBtn.addEventListener('click', () => {
-            const usernameInput = document.getElementById('register-username');
-            const emailInput = document.getElementById('register-email');
-            const passwordInput = document.getElementById('register-password');
-            const confirmPasswordInput = document.getElementById('register-confirm-password');
+    // --- LOGIC ĐĂNG KÝ (GỬI YÊU CẦU) ---
+    registerBtn.addEventListener('click', () => {
+        const usernameInput = document.getElementById('register-username');
+        const emailInput = document.getElementById('register-email');
+        const passwordInput = document.getElementById('register-password');
+        const confirmPasswordInput = document.getElementById('register-confirm-password');
 
-            const username = usernameInput.value.trim();
-            const email = emailInput.value.trim();
-            const password = passwordInput.value.trim();
-            const confirmPassword = confirmPasswordInput.value.trim();
+        const newUser = {
+            username: usernameInput.value.trim(),
+            email: emailInput.value.trim(),
+            password: passwordInput.value.trim()
+        };
+        const confirmPassword = confirmPasswordInput.value.trim();
 
-            if (!username || !email || !password || !confirmPassword) {
-                Swal.fire({ icon: 'error', title: 'Lỗi', text: 'Vui lòng điền đầy đủ thông tin!', background: 'var(--dark-color)', color: 'var(--text-color)'});
-                return;
-            }
-            if (password !== confirmPassword) {
-                Swal.fire({ icon: 'error', title: 'Lỗi', text: 'Mật khẩu xác nhận không khớp!', background: 'var(--dark-color)', color: 'var(--text-color)'});
-                return;
-            }
-            // The check for existing username can be removed if you want to allow multiple requests for the same name
-            // Or kept to prevent spam. For now, we keep it.
-            if (users.some(user => user.username === username)) {
-                Swal.fire({ icon: 'error', title: 'Lỗi', text: 'Tên đăng nhập này đã tồn tại hoặc đang chờ duyệt!', background: 'var(--dark-color)', color: 'var(--text-color)'});
-                return;
-            }
-
-            // --- IMPORTANT CHANGE ---
-            // We DO NOT add the user to the `users` array anymore.
-            // users.push({ username: username, password: password }); // <-- THIS LINE IS REMOVED.
-
-            // We show a new message to the user.
-            Swal.fire({
-                icon: 'info',
-                title: 'Yêu Cầu Đã Được Gửi',
-                text: `Yêu cầu đăng ký tài khoản "${username}" đã được gửi đi. Vui lòng chờ Admin duyệt!`,
-                background: 'var(--dark-color)',
-                color: 'var(--text-color)'
-            }).then(() => {
-                // Clear fields and switch to login page
-                usernameInput.value = '';
-                emailInput.value = '';
-                passwordInput.value = '';
-                confirmPasswordInput.value = '';
-                showPage('page-login');
-            });
-        });
-    }
-    // --- *** END: MODIFIED REGISTRATION LOGIC *** ---
-
-    // --- GAME LOADER & TOOL PAGE LOGIC ---
-    const urlLoaderSection = document.getElementById('url-loader-section');
-    const urlInput = document.getElementById('urlInput');
-    const loadIframeBtn = document.getElementById('loadIframeBtn');
-    const gameIframe = document.getElementById('game-iframe');
-    const analyzerSection = document.getElementById('analyzer-section');
-    
-    if (loadIframeBtn) {
-        loadIframeBtn.addEventListener('click', () => {
-            const url = urlInput.value.trim();
-            if (url && (url.startsWith('http://') || url.startsWith('https://'))) {
-                gameIframe.src = url;
-                gameIframe.style.display = 'block';
-                analyzerSection.style.display = 'block';
-                urlLoaderSection.style.display = 'none';
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'URL Không Hợp Lệ',
-                    text: 'Vui lòng dán một link game hợp lệ (phải bắt đầu bằng http:// hoặc https://).',
-                    background: 'var(--dark-color)',
-                    color: 'var(--text-color)'
-                });
-            }
-        });
-    }
-
-    // --- ADMIN PANEL LOGIC ---
-    const userListBody = document.getElementById('user-list-body');
-    const addUserForm = document.getElementById('addUserForm');
-
-    const renderUserTable = () => {
-        if (!userListBody) return;
-        userListBody.innerHTML = '';
-        if (users.length === 0) {
-            userListBody.innerHTML = `<tr><td colspan="2" style="text-align: center;">Không có người dùng nào.</td></tr>`;
+        if (!newUser.username || !newUser.email || !newUser.password || !confirmPassword) {
+            Swal.fire({ icon: 'error', title: 'Lỗi', text: 'Vui lòng điền đầy đủ thông tin!' });
             return;
         }
-        users.forEach((user, index) => {
-            const userRow = document.createElement('tr');
-            userRow.innerHTML = `<td>${user.username}</td><td><button class="btn-delete" data-index="${index}"><i class="fa-solid fa-trash"></i> Xóa</button></td>`;
-            userListBody.appendChild(userRow);
+        if (newUser.password !== confirmPassword) {
+            Swal.fire({ icon: 'error', title: 'Lỗi', text: 'Mật khẩu xác nhận không khớp!' });
+            return;
+        }
+
+        const pendingUsers = getData(PENDING_USERS_KEY);
+        const approvedUsers = getData(APPROVED_USERS_KEY);
+        if (pendingUsers.some(u => u.username === newUser.username) || approvedUsers.some(u => u.username === newUser.username)) {
+            Swal.fire({ icon: 'error', title: 'Lỗi', text: 'Tên đăng nhập này đã tồn tại hoặc đang chờ duyệt!' });
+            return;
+        }
+
+        // Thêm yêu cầu vào danh sách chờ
+        pendingUsers.push(newUser);
+        setData(PENDING_USERS_KEY, pendingUsers);
+
+        Swal.fire({
+            icon: 'info',
+            title: 'Yêu Cầu Đã Được Gửi',
+            text: `Yêu cầu đăng ký tài khoản "${newUser.username}" đã được gửi đi. Vui lòng chờ Admin duyệt!`,
+        }).then(() => {
+            usernameInput.value = '';
+            emailInput.value = '';
+            passwordInput.value = '';
+            confirmPasswordInput.value = '';
+            showPage('page-login');
         });
-    };
+    });
 
-    if (addUserForm) {
-        addUserForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const newUsernameInput = document.getElementById('admin-new-username');
-            const newPasswordInput = document.getElementById('admin-new-password');
-            const newUsername = newUsernameInput.value.trim();
-            const newPassword = newPasswordInput.value.trim();
-            if (newUsername && newPassword) {
-                if (users.some(user => user.username === newUsername)) {
-                    Swal.fire({ icon: 'error', title: 'Lỗi', text: 'Tên đăng nhập này đã tồn tại!', background: 'var(--dark-color)', color: 'var(--text-color)' });
-                } else {
-                    users.push({ username: newUsername, password: newPassword });
-                    renderUserTable();
-                    Swal.fire({ icon: 'success', title: 'Thành Công', text: `Đã thêm người dùng: ${newUsername}`, background: 'var(--dark-color)', color: 'var(--text-color)' });
-                    newUsernameInput.value = '';
-                    newPasswordInput.value = '';
-                }
-            } else {
-                 Swal.fire({ icon: 'warning', title: 'Cảnh Báo', text: 'Vui lòng điền đầy đủ tên đăng nhập và mật khẩu.', background: 'var(--dark-color)', color: 'var(--text-color)' });
-            }
-        });
-    }
-
-    if (userListBody) {
-        userListBody.addEventListener('click', (e) => {
-            const button = e.target.closest('.btn-delete');
-            if (button) {
-                const userIndex = button.dataset.index;
-                const usernameToDelete = users[userIndex].username;
-                Swal.fire({
-                    title: `Bạn có chắc chắn muốn xóa "${usernameToDelete}"?`, text: "Hành động này không thể hoàn tác!", icon: 'warning',
-                    showCancelButton: true, confirmButtonColor: 'var(--danger-color)', cancelButtonColor: '#6c757d',
-                    confirmButtonText: 'Vâng, xóa đi!', cancelButtonText: 'Hủy bỏ',
-                    background: 'var(--dark-color)', color: 'var(--text-color)'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        users.splice(userIndex, 1);
-                        renderUserTable();
-                        Swal.fire({ title: 'Đã Xóa!', text: `Người dùng ${usernameToDelete} đã bị xóa.`, icon: 'success', background: 'var(--dark-color)', color: 'var(--text-color)' });
-                    }
-                });
-            }
-        });
-    }
-
-    renderUserTable();
-
-    // --- MD5 TOOL LOGIC ---
+    // --- LOGIC TOOL MD5 ---
     const analyzeBtn = document.getElementById('analyzeBtn');
     if (analyzeBtn) {
         const md5Input = document.getElementById('md5Input');
         const resultDisplay = document.getElementById('resultDisplay');
-        const feedbackSection = document.getElementById('feedbackSection');
-        const correctBtn = document.getElementById('correctBtn');
-        const incorrectBtn = document.getElementById('incorrectBtn');
-        const correctCountSpan = document.getElementById('correctCount');
-        const incorrectCountSpan = document.getElementById('incorrectCount');
-        let correctCount = 0, incorrectCount = 0, feedbackGiven = false;
-
-        function analyze_md5(md5_hash) {
-            if (md5_hash.length !== 32) return "❌ MD5 không hợp lệ (phải đủ 32 ký tự).";
-            if (!/^[0-9a-f]{32}$/.test(md5_hash)) return "❌ MD5 có ký tự không hợp lệ (không phải hex).";
-            const part1 = md5_hash.substring(0, 4), part2 = md5_hash.substring(14, 18), part3 = md5_hash.substring(md5_hash.length - 4);
-            const val1 = parseInt(part1, 16), val2 = parseInt(part2, 16), val3 = parseInt(part3, 16);
-            const total = (val1 + val2 + val3) % 100, result = total >= 50 ? "Tài" : "Xỉu";
-            feedbackGiven = false;
-            if(feedbackSection) feedbackSection.style.display = 'block';
-            return `-=[ KẾT QUẢ PHÂN TÍCH VIP ]=-\n\nMD5: \n${md5_hash}\n\nCác đoạn mã được chọn:\n[${part1}] + [${part2}] + [${part3}]\n\nTính toán: \n(${val1} + ${val2} + ${val3}) % 100 = ${total}\n\n---> DỰ ĐOÁN: ${result} <---\n\n------------------------------`;
-        }
+        
         analyzeBtn.addEventListener('click', () => {
             const md5 = md5Input.value.trim().toLowerCase();
             if (!md5) { resultDisplay.textContent = "Vui lòng nhập mã MD5."; return; }
             resultDisplay.textContent = "⏳ Đang phân tích, vui lòng chờ 3 giây...";
-            if(feedbackSection) feedbackSection.style.display = 'none';
-            setTimeout(() => { resultDisplay.textContent = analyze_md5(md5); }, 3000);
+            
+            setTimeout(() => {
+                 if (md5.length !== 32 || !/^[0-9a-f]{32}$/.test(md5)) {
+                    resultDisplay.textContent = "❌ MD5 không hợp lệ. Vui lòng kiểm tra lại.";
+                    return;
+                }
+                const lastDigit = parseInt(md5.charAt(md5.length - 1), 16);
+                const result = (lastDigit >= 8) ? "Tài" : "Xỉu";
+                resultDisplay.textContent = `---> DỰ ĐOÁN: ${result} <---`;
+            }, 3000);
         });
-        if(correctBtn) correctBtn.addEventListener('click', () => { if (feedbackGiven) return; correctCount++; correctCountSpan.textContent = correctCount; feedbackSection.style.display = 'none'; feedbackGiven = true; });
-        if(incorrectBtn) incorrectBtn.addEventListener('click', () => { if (feedbackGiven) return; incorrectCount++; incorrectCountSpan.textContent = incorrectCount; feedbackSection.style.display = 'none'; feedbackGiven = true; });
     }
 });
 </script>
