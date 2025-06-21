@@ -11,398 +11,61 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         :root {
-            /* --- Bảng màu VIP Vàng & Đen --- */
-            --primary-color: #FFD700; /* Màu vàng Gold */
-            --background-start: #1a1a1a; /* Màu xám than */
-            --background-end: #000000;   /* Màu đen */
-            --dark-color: #111111;       /* Màu nền cho header/menu */
-            --text-color: #e0e0e0;
-            --white-color: #ffffff;
-            --glow-color: rgba(255, 215, 0, 0.6); /* Ánh sáng vàng */
-            --dark-gold-color: #a38a00; /* Màu vàng đậm hơn cho hover */
-            --danger-color: #dc3545; /* Màu đỏ cho nút xóa */
+            --primary-color: #FFD700; --background-start: #1a1a1a; --background-end: #000000; --dark-color: #111111; --text-color: #e0e0e0; --white-color: #ffffff; --glow-color: rgba(255, 215, 0, 0.6); --dark-gold-color: #a38a00; --danger-color: #dc3545;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to bottom, var(--background-start), var(--background-end));
-            color: var(--text-color);
-            overflow-x: hidden;
-        }
-
-        .app-container {
-            position: relative;
-            min-height: 100vh;
-            width: 100%;
-        }
-
-        /* --- Header --- */
-        .app-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 20px;
-            background-color: var(--dark-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--primary-color);
-        }
-
-        .menu-toggle {
-            font-size: 24px;
-            color: var(--primary-color);
-            text-shadow: 0 0 8px var(--glow-color);
-            cursor: pointer;
-        }
-
-        .app-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--white-color);
-            text-shadow: 0 0 8px var(--glow-color);
-        }
-
-        /* --- Side Menu --- */
-        #side-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 280px;
-            height: 100%;
-            background-color: var(--dark-color);
-            z-index: 200;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-            border-right: 2px solid var(--primary-color);
-            box-shadow: 5px 0 25px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-        }
-
-        #side-menu.open {
-            transform: translateX(0);
-        }
-        
-        .menu-header {
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid var(--primary-color);
-        }
-
-        .menu-header h2 {
-            color: var(--white-color);
-            font-weight: 600;
-            text-shadow: 0 0 8px var(--glow-color);
-        }
-
-        .menu-links {
-            list-style: none;
-            padding: 10px 0;
-            flex-grow: 1;
-            overflow-y: auto;
-        }
-
-        .menu-links a {
-            display: flex;
-            align-items: center;
-            padding: 15px 25px;
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            transition: background-color 0.2s, color 0.2s;
-        }
-        
-        .menu-links a:hover {
-            background-color: var(--primary-color);
-            color: var(--dark-color);
-        }
-
-        .menu-links a i {
-            width: 30px;
-            font-size: 18px;
-            color: var(--primary-color);
-            transition: color 0.2s;
-        }
-        
-        .menu-links a:hover i {
-            color: inherit;
-        }
-
-        .menu-footer {
-            text-align: center;
-            font-size: 14px;
-            color: var(--text-color);
-            opacity: 0.7;
-            padding: 20px 0;
-        }
-
-        /* --- Main Content --- */
-        #content-area {
-            padding: 30px 20px;
-        }
-
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- Form Styles --- */
-        .form-container {
-            max-width: 400px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .form-container h2 {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--white-color);
-            text-shadow: 0 0 10px var(--glow-color);
-            margin-bottom: 10px;
-        }
-
-        .form-container .subtitle {
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 15px;
-            background-color: var(--background-start);
-            border: 1px solid var(--text-color);
-            border-radius: 8px;
-            font-size: 16px;
-            font-family: 'Poppins', sans-serif;
-            color: var(--text-color);
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 10px var(--glow-color);
-        }
-        
-        .btn {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: var(--dark-color);
-            background-color: var(--primary-color);
-            box-shadow: 0 0 15px var(--glow-color);
-        }
-
-        .btn:hover {
-            background-color: var(--dark-gold-color);
-            box-shadow: 0 0 25px var(--glow-color), 0 0 10px var(--white-color);
-            transform: translateY(-2px);
-        }
-        
-        .form-link {
-            margin-top: 20px;
-        }
-        .form-link a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .form-link a:hover {
-            text-decoration: underline;
-        }
-
-
-        /* --- Content Pages (Contact, Notice, Admin) --- */
-        .content-box {
-            background-color: var(--dark-color);
-            padding: 25px;
-            border-radius: 10px;
-            border: 1px solid var(--primary-color);
-            box-shadow: 0 0 15px var(--glow-color);
-            max-width: 800px;
-            margin: auto;
-        }
-        
-        .content-box h2 {
-            text-align: center;
-            color: var(--primary-color);
-            text-shadow: 0 0 8px var(--glow-color);
-            margin-bottom: 25px;
-            font-size: 24px;
-        }
-
-         .content-box h3 {
-            color: var(--white-color);
-            font-size: 20px;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid var(--primary-color);
-            padding-bottom: 10px;
-        }
-        
-        .content-box p, .content-box li {
-            color: var(--text-color);
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-
-        hr.divider {
-            border-color: rgba(255, 215, 0, 0.2);
-            margin: 30px 0;
-        }
-
-        .admin-card .btn-telegram {
-            display: inline-block;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 500;
-            background-color: #2AABEE;
-            color: white;
-            transition: transform 0.2s;
-        }
-        .admin-card .btn-telegram:hover {
-            transform: scale(1.05);
-        }
-
-        .notice-list {
-            list-style: none;
-            padding-left: 0;
-        }
-        .notice-list li {
-            padding-left: 30px;
-            position: relative;
-        }
-        .notice-list li::before {
-            content: '\f058'; /* Font Awesome check-circle */
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            top: 4px;
-            color: var(--primary-color);
-        }
-        
-        /* --- Actual Tool Page --- */
-        #page-tool .tool-container {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid var(--primary-color);
-            box-shadow: 0 0 15px var(--glow-color);
-            width: 100%;
-            max-width: 600px;
-            margin: auto;
-        }
-        #page-tool input, #page-tool button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 10px;
-            border: 1px solid var(--primary-color);
-            border-radius: 5px;
-            outline: none;
-            font-size: 16px;
-            text-align: center;
-            background: #111;
-            color: var(--primary-color);
-            box-shadow: 0 0 10px var(--glow-color);
-            font-family: 'Share Tech Mono', monospace;
-        }
-         #page-tool button { cursor: pointer; transition: 0.3s; }
-         #page-tool button:hover { background: var(--dark-gold-color); color: var(--dark-color); }
-
-         #page-tool #game-iframe {
-            width: 100%;
-            height: 450px;
-            border: 1px solid var(--primary-color);
-            border-radius: 8px;
-            margin-top: 20px;
-         }
-
-         #page-tool #resultDisplay {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid var(--primary-color);
-            margin-top: 10px;
-            padding: 10px;
-            min-height: 150px;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 14px;
-            border-radius: 5px;
-            color: var(--primary-color);
-        }
-        #page-tool #feedbackSection button#correctBtn { background: #008000; color: white; border-color: #008000; }
-        #page-tool #feedbackSection button#incorrectBtn { background: #990000; color: white; border-color: #990000; }
-        
-        /* --- ADMIN PANEL STYLES --- */
-        #user-management-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        #user-management-table th, #user-management-table td {
-            padding: 12px 15px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            text-align: left;
-        }
-        #user-management-table th {
-            background-color: var(--dark-gold-color);
-            color: var(--dark-color);
-            font-weight: 600;
-        }
-        #user-management-table td {
-            color: var(--text-color);
-        }
-        .btn-delete {
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: var(--danger-color);
-            color: white;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.2s;
-        }
-        .btn-delete:hover {
-            background-color: #a71d2a;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(to bottom, var(--background-start), var(--background-end)); color: var(--text-color); overflow-x: hidden; }
+        .app-container { position: relative; min-height: 100vh; width: 100%; }
+        .app-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; background-color: var(--dark-color); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--primary-color); }
+        .menu-toggle { font-size: 24px; color: var(--primary-color); text-shadow: 0 0 8px var(--glow-color); cursor: pointer; }
+        .app-title { font-size: 20px; font-weight: 600; color: var(--white-color); text-shadow: 0 0 8px var(--glow-color); }
+        #side-menu { position: fixed; top: 0; left: 0; width: 280px; height: 100%; background-color: var(--dark-color); z-index: 200; transform: translateX(-100%); transition: transform 0.3s ease-in-out; border-right: 2px solid var(--primary-color); box-shadow: 5px 0 25px rgba(0, 0, 0, 0.5); display: flex; flex-direction: column; }
+        #side-menu.open { transform: translateX(0); }
+        .menu-header { padding: 20px; text-align: center; border-bottom: 1px solid var(--primary-color); }
+        .menu-header h2 { color: var(--white-color); font-weight: 600; text-shadow: 0 0 8px var(--glow-color); }
+        .menu-links { list-style: none; padding: 10px 0; flex-grow: 1; overflow-y: auto; }
+        .menu-links a { display: flex; align-items: center; padding: 15px 25px; color: var(--text-color); text-decoration: none; font-size: 16px; font-weight: 500; transition: background-color 0.2s, color 0.2s; }
+        .menu-links a:hover { background-color: var(--primary-color); color: var(--dark-color); }
+        .menu-links a i { width: 30px; font-size: 18px; color: var(--primary-color); transition: color 0.2s; }
+        .menu-links a:hover i { color: inherit; }
+        .menu-footer { text-align: center; font-size: 14px; color: var(--text-color); opacity: 0.7; padding: 20px 0; }
+        #content-area { padding: 30px 20px; }
+        .page { display: none; }
+        .page.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .form-container { max-width: 400px; margin: 0 auto; text-align: center; }
+        .form-container h2 { font-size: 28px; font-weight: 700; color: var(--white-color); text-shadow: 0 0 10px var(--glow-color); margin-bottom: 10px; }
+        .form-container .subtitle { margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group input { width: 100%; padding: 15px; background-color: var(--background-start); border: 1px solid var(--text-color); border-radius: 8px; font-size: 16px; font-family: 'Poppins', sans-serif; color: var(--text-color); }
+        .form-group input:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 10px var(--glow-color); }
+        .btn { width: 100%; padding: 15px; border: none; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; color: var(--dark-color); background-color: var(--primary-color); box-shadow: 0 0 15px var(--glow-color); }
+        .btn:hover { background-color: var(--dark-gold-color); box-shadow: 0 0 25px var(--glow-color), 0 0 10px var(--white-color); transform: translateY(-2px); }
+        .form-link { margin-top: 20px; } .form-link a { color: var(--primary-color); text-decoration: none; font-weight: 500; } .form-link a:hover { text-decoration: underline; }
+        .content-box { background-color: var(--dark-color); padding: 25px; border-radius: 10px; border: 1px solid var(--primary-color); box-shadow: 0 0 15px var(--glow-color); max-width: 800px; margin: auto; }
+        .content-box h2 { text-align: center; color: var(--primary-color); text-shadow: 0 0 8px var(--glow-color); margin-bottom: 25px; font-size: 24px; }
+        .content-box h3 { color: var(--white-color); font-size: 20px; margin-top: 30px; margin-bottom: 15px; border-bottom: 1px solid var(--primary-color); padding-bottom: 10px; }
+        .content-box p, .content-box li { color: var(--text-color); line-height: 1.7; margin-bottom: 15px; }
+        hr.divider { border-color: rgba(255, 215, 0, 0.2); margin: 30px 0; }
+        .admin-card .btn-telegram { display: inline-block; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: 500; background-color: #2AABEE; color: white; transition: transform 0.2s; }
+        .admin-card .btn-telegram:hover { transform: scale(1.05); }
+        .notice-list { list-style: none; padding-left: 0; }
+        .notice-list li { padding-left: 30px; position: relative; }
+        .notice-list li::before { content: '\f058'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; top: 4px; color: var(--primary-color); }
+        #page-tool .tool-container { background: rgba(0, 0, 0, 0.8); padding: 20px; border-radius: 10px; border: 2px solid var(--primary-color); box-shadow: 0 0 15px var(--glow-color); width: 100%; max-width: 600px; margin: auto; }
+        #page-tool input, #page-tool button { width: 100%; padding: 12px; margin-top: 10px; border: 1px solid var(--primary-color); border-radius: 5px; outline: none; font-size: 16px; text-align: center; background: #111; color: var(--primary-color); box-shadow: 0 0 10px var(--glow-color); font-family: 'Share Tech Mono', monospace; }
+        #page-tool button { cursor: pointer; transition: 0.3s; }
+        #page-tool button:hover { background: var(--dark-gold-color); color: var(--dark-color); }
+        #page-tool #resultDisplay { background: rgba(0,0,0,0.5); border: 1px solid var(--primary-color); margin-top: 10px; padding: 10px; min-height: 150px; white-space: pre-wrap; word-wrap: break-word; font-family: 'Share Tech Mono', monospace; font-size: 14px; border-radius: 5px; color: var(--primary-color); }
     </style>
 </head>
 <body>
-
     <div class="app-container">
         <header class="app-header">
             <i class="fa-solid fa-bars menu-toggle" id="menu-toggle-btn"></i>
             <h1 class="app-title">TOOL PHÂN TÍCH MD5</h1>
-            <div style="width: 24px;"></div> 
+            <div style="width: 24px;"></div>
         </header>
-
         <nav id="side-menu">
             <div class="menu-header">
                 <h2>MENU</h2>
@@ -413,130 +76,89 @@
                 <li><a href="#" class="nav-link" data-page="contact"><i class="fa-solid fa-phone"></i>Liên hệ</a></li>
                 <li><a href="admin.html" target="_blank"><i class="fa-solid fa-user-shield"></i>Admin Panel</a></li>
             </ul>
-            <div class="menu-footer">
-                Phát triển bởi @concacokila
-            </div>
+            <div class="menu-footer">Phát triển bởi @concacokila</div>
         </nav>
-
         <main id="content-area">
-
             <div id="page-login" class="page active">
                 <div class="form-container">
                     <h2>Đăng Nhập</h2>
                     <p class="subtitle">Công cụ phân tích - Đăng nhập hệ thống</p>
                     <form id="login-form">
-                        <div class="form-group">
-                            <input type="text" id="login-username" placeholder="Tên đăng nhập" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" id="login-password" placeholder="Mật khẩu" required>
-                        </div>
+                        <div class="form-group"><input type="text" id="login-username" placeholder="Tên đăng nhập" required></div>
+                        <div class="form-group"><input type="password" id="login-password" placeholder="Mật khẩu" required></div>
                         <button type="submit" class="btn">Đăng Nhập</button>
                     </form>
                     <p class="form-link">Bạn chưa có tài khoản? <a href="#" class="nav-link" data-page="register">Đăng ký</a></p>
                 </div>
             </div>
-            
             <div id="page-register" class="page">
-                 <div class="form-container">
+                <div class="form-container">
                     <h2>Đăng Ký</h2>
                     <p class="subtitle">Công Cụ Tiện Ích - Phân Tích & Tự Động Hóa Dữ Liệu</p>
                     <form>
-                        <div class="form-group">
-                            <input type="text" id="register-username" placeholder="Tên đăng nhập" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="register-email" placeholder="Gmail của bạn" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" id="register-password" placeholder="Mật khẩu" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" id="register-confirm-password" placeholder="Xác nhận mật khẩu" required>
-                        </div>
+                        <div class="form-group"><input type="text" id="register-username" placeholder="Tên đăng nhập" required></div>
+                        <div class="form-group"><input type="email" id="register-email" placeholder="Gmail của bạn" required></div>
+                        <div class="form-group"><input type="password" id="register-password" placeholder="Mật khẩu" required></div>
+                        <div class="form-group"><input type="password" id="register-confirm-password" placeholder="Xác nhận mật khẩu" required></div>
                         <button type="button" class="btn" id="register-btn">Đăng Ký</button>
                     </form>
-                     <p class="form-link">Bạn đã có tài khoản? <a href="#" class="nav-link" data-page="login">Đăng nhập</a></p>
+                    <p class="form-link">Bạn đã có tài khoản? <a href="#" class="nav-link" data-page="login">Đăng nhập</a></p>
                 </div>
             </div>
-
             <div id="page-contact" class="page">
-                 <div class="content-box">
+                <div class="content-box">
                     <h2><i class="fa-solid fa-star" style="color: yellow;"></i> Thông Tin Admin</h2>
                     <div class="admin-card">
                         <h3>MR DANEL</h3>
-                        <p>Hỗ Trợ Kích Hoạt tài khoản Khi Bạn Mua, chuyên viên phát triển hệ thống, đảm bảo tất cả công cụ hoạt động mượt mà và hỗ trợ người dùng hiệu quả.</p>
+                        <p>Hỗ Trợ Kích Hoạt tài khoản Khi Bạn Mua, chuyên viên phát triển hệ thống...</p>
                         <a href="https://t.me/concacokila" target="_blank" class="btn-telegram"><i class="fa-brands fa-telegram"></i> Liên hệ MR DANEL</a>
                     </div>
                     <hr class="divider">
                     <div class="admin-card">
                         <h3>NHANXG</h3>
-                        <p>Hỗ Trợ Kích Hoạt tài Khoản Khi Bạn Mua, chuyên gia hỗ trợ khách hàng, luôn sẵn sàng giúp đỡ khi bạn gặp vấn đề với công cụ.</p>
-                         <a href="https://t.me/thuylinh17272" target="_blank" class="btn-telegram"><i class="fa-brands fa-telegram"></i> Liên hệ NHANXG</a>
+                        <p>Hỗ Trợ Kích Hoạt tài Khoản Khi Bạn Mua, chuyên gia hỗ trợ khách hàng...</p>
+                        <a href="https://t.me/thuylinh17272" target="_blank" class="btn-telegram"><i class="fa-brands fa-telegram"></i> Liên hệ NHANXG</a>
                     </div>
                 </div>
             </div>
-            
             <div id="page-notice" class="page">
                 <div class="content-box">
                     <h2><i class="fa-solid fa-triangle-exclamation" style="color: yellow;"></i> Lưu Ý Quan Trọng</h2>
                     <ul class="notice-list">
-                        <li>Hệ thống phân tích có xác suất, chỉ mang tính chất tham khảo, không cam kết chính xác 100%. Vui lòng chơi có trách nhiệm.</li>
-                        <li>Để đảm bảo độ chính xác tốt nhất, vui lòng đợi phiên mới bắt đầu khoảng 15 giây trước khi sử dụng tool.</li>
-                        <li>Nghiêm cấm các trường hợp mua bán, trao đổi hoặc cho mượn tài khoản tool. Vi phạm sẽ bị khóa tài khoản vĩnh viễn mà không cần báo trước.</li>
+                        <li>Hệ thống phân tích có xác suất, chỉ mang tính chất tham khảo...</li>
+                        <li>Để đảm bảo độ chính xác tốt nhất, vui lòng đợi phiên mới bắt đầu...</li>
+                        <li>Nghiêm cấm các trường hợp mua bán, trao đổi hoặc cho mượn tài khoản...</li>
                         <li>Tool hoạt động tốt nhất trên các cổng game được hỗ trợ.</li>
                     </ul>
                     <p style="text-align:center; margin-top: 30px; font-weight: 600; color: var(--white-color);">Tác giả: MR DANEL</p>
                     <button type="button" class="btn" id="understand-btn">Tôi Đã Hiểu & Tiếp Tục</button>
                 </div>
             </div>
-
             <div id="page-tool" class="page">
-                 <div class="tool-container">
+                <div class="tool-container">
                     <h2>TOOL PHÂN TÍCH MD5</h2>
                     <div id="analyzer-section">
                         <input type="text" id="md5Input" placeholder="Nhập chuỗi MD5 tại đây">
                         <button id="analyzeBtn">Phân Tích</button>
                         <pre id="resultDisplay">Kết quả phân tích sẽ hiện ở đây...</pre>
                     </div>
-                 </div>
+                </div>
             </div>
-            
         </main>
     </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     // --- KHAI BÁO BIẾN ---
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLfr6CJV6QN-F0HGCGtIrDWughIiWt2x-bW6lb59PUVdeWEDGP6wEoEa0Rk8C77EFtIg/exec';
+
     const menuToggleBtn = document.getElementById('menu-toggle-btn');
     const sideMenu = document.getElementById('side-menu');
     const navLinks = document.querySelectorAll('.nav-link');
     const pages = document.querySelectorAll('.page');
-    
     const loginForm = document.getElementById('login-form');
     const understandBtn = document.getElementById('understand-btn');
     const registerBtn = document.getElementById('register-btn');
-
-    // --- KHÓA DỮ LIỆU TRÊN LOCALSTORAGE ---
-    const PENDING_USERS_KEY = 'tool_pendingUsers';
-    const APPROVED_USERS_KEY = 'tool_approvedUsers';
-
-    // --- HÀM HỖ TRỢ ---
-    const getData = (key) => JSON.parse(localStorage.getItem(key)) || [];
-    const setData = (key, data) => localStorage.setItem(key, JSON.stringify(data));
-
-    // Khởi tạo dữ liệu mẫu nếu chưa có
-    if (!localStorage.getItem(APPROVED_USERS_KEY)) {
-        const initialUsers = [
-            { username: 'userdemo1', password: 'password123' },
-            { username: 'mr_danel', password: 'password123' }
-        ];
-        setData(APPROVED_USERS_KEY, initialUsers);
-    }
-     if (!localStorage.getItem(PENDING_USERS_KEY)) {
-        setData(PENDING_USERS_KEY, []);
-    }
-
 
     // --- LOGIC CHUYỂN TRANG ---
     const showPage = (pageId) => {
@@ -545,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetPage) {
             targetPage.classList.add('active');
         } else {
-            document.getElementById('page-login').classList.add('active'); // Mặc định về trang login
+            document.getElementById('page-login').classList.add('active');
         }
         sideMenu.classList.remove('open');
     };
@@ -554,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     navLinks.forEach(link => {
         const pageName = link.getAttribute('data-page');
-        if (pageName) { // Chỉ gán sự kiện cho các link có data-page
+        if (pageName) {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 showPage("page-" + pageName);
@@ -567,22 +189,32 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const username = document.getElementById('login-username').value;
         const password = document.getElementById('login-password').value;
-        const approvedUsers = getData(APPROVED_USERS_KEY);
-        
-        const foundUser = approvedUsers.find(user => user.username === username && user.password === password);
-        
-        if (foundUser) {
-            Swal.fire({ icon: 'success', title: 'Đăng nhập thành công!', showConfirmButton: false, timer: 1500 });
-            showPage('page-notice');
-        } else {
-            Swal.fire({ icon: 'error', title: 'Lỗi', text: 'Sai tên đăng nhập hoặc mật khẩu, hoặc tài khoản của bạn chưa được duyệt!' });
-        }
+
+        Swal.fire({ title: 'Đang đăng nhập...', allowOutsideClick: false, didOpen: () => { Swal.showLoading(); } });
+
+        fetch(SCRIPT_URL + '?action=login', {
+            method: 'POST',
+            mode: 'cors',
+            body: JSON.stringify({ username, password })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                Swal.fire({ icon: 'success', title: 'Đăng nhập thành công!', showConfirmButton: false, timer: 1500 });
+                showPage('page-notice');
+            } else {
+                Swal.fire({ icon: 'error', title: 'Lỗi', text: data.message || 'Có lỗi xảy ra, vui lòng thử lại.' });
+            }
+        })
+        .catch(err => {
+            Swal.fire({ icon: 'error', title: 'Lỗi Mạng', text: 'Không thể kết nối đến máy chủ. Vui lòng kiểm tra lại.' });
+        });
     });
 
     understandBtn.addEventListener('click', () => {
         showPage('page-tool');
     });
-    
+
     // --- LOGIC ĐĂNG KÝ (GỬI YÊU CẦU) ---
     registerBtn.addEventListener('click', () => {
         const usernameInput = document.getElementById('register-username');
@@ -605,44 +237,49 @@ document.addEventListener('DOMContentLoaded', () => {
             Swal.fire({ icon: 'error', title: 'Lỗi', text: 'Mật khẩu xác nhận không khớp!' });
             return;
         }
+        
+        Swal.fire({ title: 'Đang gửi yêu cầu...', allowOutsideClick: false, didOpen: () => { Swal.showLoading(); } });
 
-        const pendingUsers = getData(PENDING_USERS_KEY);
-        const approvedUsers = getData(APPROVED_USERS_KEY);
-        if (pendingUsers.some(u => u.username === newUser.username) || approvedUsers.some(u => u.username === newUser.username)) {
-            Swal.fire({ icon: 'error', title: 'Lỗi', text: 'Tên đăng nhập này đã tồn tại hoặc đang chờ duyệt!' });
-            return;
-        }
-
-        // Thêm yêu cầu vào danh sách chờ
-        pendingUsers.push(newUser);
-        setData(PENDING_USERS_KEY, pendingUsers);
-
-        Swal.fire({
-            icon: 'info',
-            title: 'Yêu Cầu Đã Được Gửi',
-            text: `Yêu cầu đăng ký tài khoản "${newUser.username}" đã được gửi đi. Vui lòng chờ Admin duyệt!`,
-        }).then(() => {
-            usernameInput.value = '';
-            emailInput.value = '';
-            passwordInput.value = '';
-            confirmPasswordInput.value = '';
-            showPage('page-login');
+        fetch(SCRIPT_URL + '?action=register', {
+            method: 'POST',
+            mode: 'cors',
+            body: JSON.stringify(newUser)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Yêu Cầu Đã Được Gửi',
+                    text: `Yêu cầu đăng ký tài khoản "${newUser.username}" đã được gửi đi. Vui lòng chờ Admin duyệt!`,
+                }).then(() => {
+                    usernameInput.value = '';
+                    emailInput.value = '';
+                    passwordInput.value = '';
+                    confirmPasswordInput.value = '';
+                    showPage('page-login');
+                });
+            } else {
+                 Swal.fire({ icon: 'error', title: 'Lỗi Đăng Ký', text: data.message || 'Có lỗi xảy ra.' });
+            }
+        })
+        .catch(err => {
+            Swal.fire({ icon: 'error', title: 'Lỗi Mạng', text: 'Không thể kết nối đến máy chủ. Vui lòng kiểm tra lại.' });
         });
     });
+
 
     // --- LOGIC TOOL MD5 ---
     const analyzeBtn = document.getElementById('analyzeBtn');
     if (analyzeBtn) {
         const md5Input = document.getElementById('md5Input');
         const resultDisplay = document.getElementById('resultDisplay');
-        
         analyzeBtn.addEventListener('click', () => {
             const md5 = md5Input.value.trim().toLowerCase();
             if (!md5) { resultDisplay.textContent = "Vui lòng nhập mã MD5."; return; }
             resultDisplay.textContent = "⏳ Đang phân tích, vui lòng chờ 3 giây...";
-            
             setTimeout(() => {
-                 if (md5.length !== 32 || !/^[0-9a-f]{32}$/.test(md5)) {
+                if (md5.length !== 32 || !/^[0-9a-f]{32}$/.test(md5)) {
                     resultDisplay.textContent = "❌ MD5 không hợp lệ. Vui lòng kiểm tra lại.";
                     return;
                 }
@@ -654,6 +291,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 </script>
-
 </body>
 </html>
